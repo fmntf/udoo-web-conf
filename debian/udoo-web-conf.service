@@ -4,8 +4,6 @@ Description=UDOO Web Configuration Tool
 [Service]
 WorkingDirectory=/opt/udoo-web-conf
 ExecStart=/usr/bin/nodejs -- ./bin/www
-ExecStartPre=/bin/mount -o bind /boot/docs /opt/udoo-web-conf/docs
-ExecStopPost=/bin/umount -lf /boot/docs
 Restart=always
 RestartSec=10
 SyslogIdentifier=udoo-web-conf

@@ -31,7 +31,7 @@ app.use('/arduino', arduinoRoutes);
 app.use('/settings', settingsRoutes);
 
 //documentation static pages
-app.use('/docs', express.static('/opt/udoo-web-conf/docs'));
+app.use('/docs', express.static('/boot/docs'));
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
