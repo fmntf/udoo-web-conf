@@ -247,7 +247,7 @@
 <script src="/ardublockly/ardublockly/ardublockly_design.js"></script>
 <script src="/ardublockly/ardublockly/ardublockly_toolbox.js"></script>
 <script src="/ardublockly/ardublockly/ardublockly_blockly.js"></script>
-<script src="/ardublockly/ardublockly/ardublockly.js"></script>
+<script src="/js/ardublockly.js"></script>
 <script>
     window.addEventListener('load', function load(event) {
         window.removeEventListener('load', load, false);
