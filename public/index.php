@@ -11,6 +11,9 @@
 |
 */
 
+session_name("s");
+session_start();
+
 $app = require __DIR__.'/../bootstrap/app.php';
 
 /*

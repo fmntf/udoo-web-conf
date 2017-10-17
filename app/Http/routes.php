@@ -19,6 +19,18 @@ $app->get('/', [
     'as' => 'index', 'uses' => 'IndexController@index'
 ]);
 
+$app->get('/login', [
+    'as' => 'login', 'uses' => 'LoginController@index'
+]);
+
+$app->post('/login', [
+    'as' => 'login', 'uses' => 'LoginController@login'
+]);
+
+$app->get('/logout', [
+    'as' => 'logout', 'uses' => 'LoginController@logout'
+]);
+
 $app->get('/arduino/samples', [
     'as' => 'arduino-samples', 'uses' => 'ArduinoController@samples'
 ]);
