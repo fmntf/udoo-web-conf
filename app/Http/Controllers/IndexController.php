@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 class IndexController extends BaseController
 {
     public function index() {
+        return redirect(route('dashboard'));
+    }
+
+    public function dashboard() {
         $hostname = file_get_contents("/etc/hostname");
 
         $devices = [

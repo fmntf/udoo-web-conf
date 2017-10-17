@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/layout/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="/layout/bootstrap/css/bootstrap-theme.css" rel="stylesheet">
-    <link href="/layout/metis/metisMenu.min.css" rel="stylesheet">
+    <link href="/layout/metis/metisMenu.css" rel="stylesheet">
     <link href="/layout/sbadmin/css/sb-admin-2.css" rel="stylesheet">
     <link href="/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="/layout/style.css" rel="stylesheet">
@@ -29,13 +29,14 @@
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
-                    <li><a href="/"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+                    <li><a href="/dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
 
                     <li>
                         <a href="#"><i class="fa fa-code fa-fw"></i> Arduino<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="/arduino/samples"><i class="fa fa-file-text-o"></i> Samples</a></li>
                             <li><a href="/arduino/webide"><i class="fa fa-edit fa"></i> Web IDE</a></li>
+                            <li><a href="/arduino/ardublockly" target="_blank"><i class="fa fa-puzzle-piece fa"></i> Ardublockly</a></li>
                             <li><a href="/arduino/appinventor"><i class="fa fa-puzzle-piece fa"></i> App Inventor</a></li>
                         </ul>
                     </li>
@@ -62,7 +63,7 @@
     </div>
 </div>
 
-<script type='text/javascript' src='/layout/metis/metisMenu.min.js'></script>
+<script type='text/javascript' src='/layout/metis/metisMenu.js'></script>
 <script type='text/javascript' src='/layout/sbadmin/js/sb-admin-2.js'></script>
 
 </body>

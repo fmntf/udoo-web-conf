@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "dfc7593089f3b6a522e89b5c4c4b9fcf",
+    "content-hash": "0ca97c2176d809153fa3b544b5923891",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -2886,6 +2886,50 @@
                 "environment"
             ],
             "time": "2016-09-01T10:05:43+00:00"
+        },
+        {
+            "name": "youssman/country-language",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/youssman/country-language.git",
+                "reference": "c888d95b005a5ea4e0a232256e963cafdc1759a0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/youssman/country-language/zipball/c888d95b005a5ea4e0a232256e963cafdc1759a0",
+                "reference": "c888d95b005a5ea4e0a232256e963cafdc1759a0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "Youssman\\CountryLanguage\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Youssef HAITI",
+                    "email": "haiti.youssef@gmail.com"
+                }
+            ],
+            "description": "Get any country's spoken languages or find countries where a language is spoken.",
+            "keywords": [
+                "country",
+                "country-codes",
+                "language",
+                "language-codes",
+                "native",
+                "php"
+            ],
+            "time": "2017-04-18T01:49:14+00:00"
         }
     ],
     "packages-dev": [
@@ -4008,7 +4052,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "youssman/country-language": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

@@ -8,7 +8,8 @@
         "laravel/lumen-framework": "5.2.*",
         "vlucas/phpdotenv": "~2.2",
         "cboden/ratchet": "^0.4.0",
-        "evenement/evenement": "2.*"
+        "evenement/evenement": "2.*",
+        "youssman/country-language": "*@dev"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.0"

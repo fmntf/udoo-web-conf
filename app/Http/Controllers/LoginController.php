@@ -14,6 +14,7 @@ class LoginController extends BaseController
 
         $username = $request->get('username');
         $password = $request->get('password');
+        $password = '"' . str_replace('"', '\"', $password) . '"';
 
         exec("python " . app()->basePath() . "/bin/pam.py $username $password", $out, $ret);
 

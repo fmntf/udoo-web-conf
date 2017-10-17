@@ -39,7 +39,7 @@ $(document).ready(function() {
                         
                         for (var i=0; i<response.languages.length; i++) {
                             var l = response.languages[i],
-                                html = "<option value=\"" + l.iso639_1 + "\">" + l.name[0] + "</option>";
+                                html = "<option value=\"" + l.code + "\">" + l.name + "</option>";
                             $("#edit-site-default-language").append(html);
                         }
                         

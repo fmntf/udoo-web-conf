@@ -279,7 +279,7 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="/js/dashboard.js"></script>
     <script type="text/javascript" src="/js/reconnecting-websocket.js"></script>
+    <script type="text/javascript" src="/js/dashboard.js"></script>
 
 @endsection
