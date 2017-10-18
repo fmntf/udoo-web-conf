@@ -1,86 +1,69 @@
 @extends('default')
 
-@section('title', 'Arduino Web IDE')
+@section('title', 'Arduino Web Editor')
 
 @section('content')
+
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2>
+                        ARDUINO WEB EDITOR
+                    </h2>
+                </div>
+                <div class="body">
+                    <p>Use this Web IDE to upload your own Sketch. Write the code below and press the Upload button.</p>
+                    <p>Be aware that it could take 30 seconds or more to verify and upload the sketch.</p>
+
+                    <div class="row m-t-30">
+                        <div class="col-xs-12">
+                            <pre style="height:300px;" id="editor">{{ $last }}</pre>
+                        </div>
+                    </div>
+
+                    <button id="upload-ide" type="button" class="btn bg-pink waves-effect">UPLOAD SKETCH</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="modal fade" id="waitDialog" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">UDOO Neo</h4>
+                    <h4 class="modal-title">Arduino</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="loading">Please wait, the sketch is being compiled and flashed.<br>
-                        This can take up to a minute...
+                    <div class="loading">Please wait, the sketch is being flashed...
                         <br><br><br>
-                        <div style="text-align:center;"><img src="/images/loader-small.gif"></div>
+                        <div class="text-center">
+                            <div class="preloader">
+                                <div class="spinner-layer pl-pink">
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <br><br>
                     </div>
                     <div class="loaded hidden">The sketch has been uploaded!</div>
                     <div class="error hidden"></div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-lg-12">
-            <div><p class="title_sections1">ARDUINO WEB IDE</p></div>
-            <div class="text_g">Use this Web IDE to upload your own Sketch. Write the code below and press the Upload button. Be aware that it could take 30 seconds or more to verify and upload the sketch.</div>
-        </div>
-    </div>
+@endsection
 
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <pre id="editor">{{ $last }}</pre>
-            <div id="feedback">
-            Write your Sketch and hit Upload to Flash it on UDOO NEO's integrated Arduino Microcontroller
-            </div>
-        </div>
-
-        <div class="col-md-2 col-sm-12 col-xs-12" id="button">
-            <br>
-            <div class="wrapper_docs"><button type="button" id="upload-ide" class="btn btn-primary btn-block">UPLOAD</button></div>
-        </div>
-    </div>
-
-    <script src="/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
-    <script>
-        var editor = ace.edit("editor");
-        editor.setTheme("ace/theme/chrome");
-        editor.session.setMode("ace/mode/c_cpp");
-        editor.setOptions({
-            fontSize: "13pt"
-        });
-
-        $(function() {
-            $("#upload-ide").on("click", function() {
-                $('#waitDialog div.loading').removeClass("hidden");
-                $('#waitDialog div.loaded').addClass("hidden");
-                $('#waitDialog div.error').addClass("hidden");
-                $('#waitDialog').modal('show');
-
-                $.ajax({
-                    type: "POST",
-                    url: '/arduino/compilesketch/',
-                    data: {
-                        sketch: ace.edit("editor").getValue().replace(/[^\040-\176\200-\377]/gi, "\n")
-                    },
-                    success: function(response) {
-                        $('#waitDialog div.loading').addClass("hidden");
-                        if (response.success) {
-                            $('#waitDialog div.loaded').removeClass("hidden");
-                        } else {
-                            $('#waitDialog div.error').html(response.message || "Cannot flash sketch!").removeClass("hidden");
-                        }
-                    }
-                });
-            });
-        });
-    </script>
-
+@section('scripts')
+    <script src="/js/ace/ace.js" type="text/javascript"></script>
+    <script src="/js/arduino-webide.js"></script>
 @endsection

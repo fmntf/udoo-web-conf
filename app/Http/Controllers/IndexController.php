@@ -32,13 +32,6 @@ class IndexController extends BaseController
             $bt = "Not connected";
         }
 
-        exec("udooscreenctl get", $out, $status);
-        if ($status === 0) {
-            $screen = strtoupper(trim($out[0]));
-        } else {
-            $screen = "Unknown";
-        }
-
         exec("ping -c 1 google.com", $out, $onlineStatus);
         $this->enableMotionSensors();
 
@@ -49,12 +42,11 @@ class IndexController extends BaseController
             'ssid' => $ssid,
             'bt' => $bt,
             'board' => [
-                'id' => $this->cpuID,
+                'id' => $_SESSION['board']['id'],
                 'name' => $hostname,
-                'image' => $this->boardImage,
-                'model' => $this->boardModel,
-                'online' => $onlineStatus === 0 ? 'Yes' : 'No',
-                'video' => $screen,
+                'image' => $_SESSION['board']['image'],
+                'model' => $_SESSION['board']['model'],
+                'online' => $onlineStatus === 0 ? 'Connected' : 'Unavailable',
             ],
         ]);
     }

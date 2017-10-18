@@ -18,21 +18,25 @@ class SettingsController extends BaseController
         $username = $request->request->get("username");
         $password = $request->request->get("password");
 
-        exec("root:$password | chpasswd");
+        exec("root:$password | chpasswd", $out, $retval);
         if ($username === 'udooer') {
             exec("x11vnc -storepasswd $password /etc/x11vnc.pass");
         }
 
-        return redirect(route('settings-base').'?saved');
+        return response()->json([
+            'success' => $retval === 0
+        ]);
     }
 
     public function sethostname(Request $request) {
         $hostname = $request->request->get("hostname");
 
-        exec("echo $hostname > /etc/hostname");
+        exec("echo $hostname > /etc/hostname", $out, $retval);
         exec("echo '127.0.0.1   localhost ' $hostname >> /etc/hosts");
 
-        return redirect(route('settings-base').'?saved');
+        return response()->json([
+            'success' => $retval === 0
+        ]);
     }
 
     public function network() {

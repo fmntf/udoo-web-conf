@@ -1,99 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html>
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="/layout/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="/layout/bootstrap/css/bootstrap-theme.css" rel="stylesheet">
-    <link href="/layout/metis/metisMenu.min.css" rel="stylesheet">
-    <link href="/layout/sbadmin/css/sb-admin-2.css" rel="stylesheet">
-    <link href="/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="/layout/style.css" rel="stylesheet">
-    <title>@yield('title')</title>
-    <script type='text/javascript' src='/js/jquery-2.1.4.min.js'></script>
-    <script type='text/javascript' src='/layout/bootstrap/js/bootstrap.min.js'></script>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>UDOO Board - Login</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link href="/fonts/roboto/roboto.css" rel="stylesheet" type="text/css">
+    <link href="/fonts/iconfont/material-icons.css" rel="stylesheet" type="text/css">
+    <link href="/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/plugins/node-waves/waves.css" rel="stylesheet" />
+    <link href="/plugins/animate-css/animate.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet">
 </head>
-<body>
-<div id="wrapper">
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/"><img src="/images/logo_small.png" width="105" height="70" alt="UDOO"></a>
-        </div>
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse">
-                <ul class="nav" id="side-menu">
-                    <li><a href="/"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
 
-                    <li>
-                        <a href="#"><i class="fa fa-code fa-fw"></i> Arduino<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="/arduino/samples"><i class="fa fa-file-text-o"></i> Samples</a></li>
-                            <li><a href="/arduino/webide"><i class="fa fa-edit fa"></i> Web IDE</a></li>
-                            <li><a href="/arduino/appinventor"><i class="fa fa-puzzle-piece fa"></i> App Inventor</a></li>
-                        </ul>
-                    </li>
-
-                    <li><a href="/docs"><i class="fa fa-book fa-fw"></i> Documentation</a></li>
-                    <li><a href="http://www.udoo.org/forum" target="_blank"><i class="fa fa-comments fa-fw"></i> Support forums</a></li>
-                    <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i> Configuration<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="/settings/base"><i class="fa fa-key fa"></i> Passwords and hostname</a></li>
-                            <li><a href="/settings/network"><i class="fa fa-wifi fa"></i> Network settings</a></li>
-                            <li><a href="/settings/regional"><i class="fa fa-language fa"></i> Regional settings</a></li>
-                            <li><a href="/settings/advanced"><i class="fa fa-cogs fa"></i> Advanced settings</a></li>
-                            <li><a href="/settings/iot"><i class="fa fa-cogs fa"></i> IoT Configuration</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <div id="page-wrapper">
-
-        <form action="{{ route('login') }}" method="POST">
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-offset-5 col-md-3">
-                        <div class="form-login">
-
-                            <input type="text" name="username" class="form-control input-sm chat-input" placeholder="username" />
-                            </br>
-                            <input type="password" name="password" class="form-control input-sm chat-input" placeholder="password" />
-                            </br>
-                            <div class="wrapper">
-                                <span class="group-btn">
-                                    <input type="submit" class="btn btn-primary btn-md" value="Login">
-                                </span>
-                            </div>
-
-                            @if (isset($message))
-                              {{ $message }}
-                            @endif
-                        </div>
-
+<body class="login-page">
+<div class="login-box">
+    <div class="logo">
+        <a>{{ $_SESSION['board']['model'] }}</a>
+        <small>Web Control Panel</small>
+    </div>
+    <div class="card">
+        <div class="body">
+            <form id="sign_in" method="POST" action="{{ route('login') }}">
+                <div class="msg">Sign in to start your session</div>
+                <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                        </span>
+                    <div class="form-line">
+                        <input type="text" class="form-control" name="username" placeholder="Username" required value="udooer">
                     </div>
                 </div>
-            </div>
+                <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">lock</i>
+                        </span>
+                    <div class="form-line">
+                        <input type="password" class="form-control" name="password" placeholder="Password" required autofocus>
+                    </div>
+                </div>
 
-        </form>
+                @if (isset($message))
+                    <div class="row m-t-15 m-b--20">
+                        <div class="col-xs-12">
+                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                <strong>Error!</strong> {{ $message }}
+                            </div>
+                        </div>
+                    </div>
+                @endif
 
-
+                <div class="row">
+                    <div class="col-xs-offset-4 col-xs-4">
+                        <button class="btn btn-block bg-pink waves-effect" type="submit">SIGN IN</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-<script type='text/javascript' src='/layout/metis/metisMenu.min.js'></script>
-<script type='text/javascript' src='/layout/sbadmin/js/sb-admin-2.js'></script>
-
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.js"></script>
+<script src="/plugins/node-waves/waves.js"></script>
+<script src="/plugins/jquery-validation/jquery.validate.js"></script>
+<script src="/js/admin.js"></script>
+<script src="/js/login.js"></script>
 </body>
-</html>
 
+</html>

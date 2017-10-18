@@ -1,54 +1,4 @@
-/*
-udoo-web-conf - web configuration tool for UDOO boards
-Copyright (C) 2015-2016 UDOO Team
-
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-*/
-
-// var socket = io();
-//
-// socket.on('connection', function(socket){
-//     console.log("Connected");
-//     setInterval(function () {
-//         socket.emit('getnetworkstatus', '');
-//     }, 10000);
-// });
-//
-
-
-// socket.on('cpuid', function(data) {
-//     document.getElementById('spancpuid').innerHTML = data;
-// });
-//
-// socket.on('online', function(data) {
-//     document.getElementById('spanonline').innerHTML = data;
-// });
-//
-// socket.on('wlansssid', function(data) {
-//     document.getElementById('wlanssid').innerHTML = data;
-// });
-//
-// socket.on('boardname', function(data) {
-//     document.getElementById('spanname').innerHTML = data;
-// });
-//
-// socket.on('videooutput', function(data) {
-//     document.getElementById('spanvideo').innerHTML = data;
-// });
-
-function arduinoMap(x, in_min, in_max, out_min, out_max) {
+﻿function arduinoMap(x, in_min, in_max, out_min, out_max) {
     return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
@@ -59,7 +9,7 @@ $(function() {
         graphType = "axis";
         $(".switch-axis").addClass("active");
         $(".switch-modulus").removeClass("active");
-        
+
         $("#sensors-modulus").addClass("hidden");
         $("#sensors-axis").removeClass("hidden");
     });
@@ -67,11 +17,11 @@ $(function() {
         graphType = "modulus";
         $(".switch-axis").removeClass("active");
         $(".switch-modulus").addClass("active");
-        
+
         $("#sensors-modulus").removeClass("hidden");
         $("#sensors-axis").addClass("hidden");
     });
-    
+
     $("a.remoteterminal").attr("href", "http://" + location.hostname + ":8000");
 
 

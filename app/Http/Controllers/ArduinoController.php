@@ -11,9 +11,15 @@ class ArduinoController extends BaseController
     }
 
     public function webide() {
-        $last = "";
-        if (file_exists("/opt/udoo-web-conf/mysketch/mysketch.ino")) {
-            $last = file_get_contents("/opt/udoo-web-conf/mysketch/mysketch.ino");
+        if (file_exists($this->getSketchPath())) {
+            $last = file_get_contents($this->getSketchPath());
+        } else {
+            $last = "void setup() {
+}
+
+void loop() {
+}
+";
         }
 
         return view('arduino/webide', [
@@ -35,7 +41,7 @@ class ArduinoController extends BaseController
     }
 
     public function compilesketch() {
-        exec("export DISPLAY=:0 && /usr/bin/arduino --upload ". app()->basePath() ."/mysketch/mysketch.ino", $out, $status);
+        exec("export DISPLAY=:0 && /usr/bin/arduino --upload ". $this->getSketchPath(), $out, $status);
 
         return response()->json([
             'success' => $status === 0 ? true : false,
@@ -57,5 +63,13 @@ class ArduinoController extends BaseController
         file_put_contents(app()->basePath() . "/mysketch/mysketch.ino", $code);
 
         return $this->compilesketch();
+    }
+
+    private function getSketchPath() {
+        $dir = app()->basePath() ."/mysketch";
+        if (!is_dir($dir)) {
+            mkdir($dir);
+        }
+        return $dir . "/mysketch.ino";
     }
 }
