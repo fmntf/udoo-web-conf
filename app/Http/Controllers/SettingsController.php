@@ -9,7 +9,6 @@ class SettingsController extends BaseController
 {
     public function base() {
         return view('settings/base', [
-            'saved' => array_key_exists('saved', $_GET),
             'hostname' => file_get_contents("/etc/hostname")
         ]);
     }
@@ -40,9 +39,7 @@ class SettingsController extends BaseController
     }
 
     public function network() {
-        return view('settings/network', [
-            'saved' => array_key_exists('saved', $_GET)
-        ]);
+        return view('settings/network');
     }
 
     public function wifinetworks() {
@@ -113,12 +110,14 @@ class SettingsController extends BaseController
 
         $command = 'nmcli dev wifi con ' . '"' . $ssid . '"';
         if (trim($password) !== '') {
-            $command .= 'password ' . '"' . $password . '"';
+            $command .= ' password ' . '"' . $password . '"';
         }
 
-        exec($command);
+        exec($command, $out, $retval);
 
-        return redirect(route('settings-network').'?saved');
+        return response()->json([
+            'success' => $retval === 0
+        ]);
     }
 
     public function regional() {
@@ -127,7 +126,6 @@ class SettingsController extends BaseController
         $lang = trim($out[0]);
 
        return view('settings/regional', [
-            'saved' => array_key_exists('saved', $_GET),
             'lang' => $lang,
             'timezone' => $timezone,
             'defaultTimezone' => $timezone === "Etc/UTC"
@@ -171,7 +169,9 @@ class SettingsController extends BaseController
             exec($command);
         }
 
-        return redirect(route('settings-regional').'?saved');
+        return response()->json([
+            'success' => true
+        ]);
     }
 
     public function advanced() {
@@ -183,7 +183,7 @@ class SettingsController extends BaseController
         }
 
         $m4 = null;
-        if ($this->hasM4) {
+        if ($_SESSION['board']['supports']['m4']) {
             exec("udoom4ctl status", $out, $status);
             if ($status === 0) {
                 $m4 = trim($out[0]);
@@ -203,8 +203,8 @@ class SettingsController extends BaseController
         return view('settings/advanced', [
             'saved' => array_key_exists('saved', $_GET),
             'video' => $screen,
-            'hasLvds15' => $this->hasLvds15,
-            'hasM4' => $this->hasM4,
+            'hasLvds15' => $_SESSION['board']['supports']['lvds15'],
+            'hasM4' => $_SESSION['board']['supports']['m4'],
             'm4' => $m4 == 'true' ? 'enabled' : 'disabled',
             'port'=> $port,
         ]);

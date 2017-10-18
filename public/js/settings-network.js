@@ -1,6 +1,10 @@
 $(function() {
     refreshWifiList();
     setInterval(refreshWifiList, 15000);
+
+    $("#connect").on("click", function() {
+        connectToNetwork();
+    });
 });
 
 function refreshWifiList() {
@@ -17,7 +21,7 @@ function refreshWifiList() {
                     var w = response.wifi[i];
                     var html = ['<a href="#" class="list-group-item" data-networkname="' + w.networkName + '" data-protected="' + w.isProtected + '">'];
                     if (w.isProtected) {
-                        html.push('<span class="badge"><i class="fa fa-lock"></i></span>');
+                        html.push('<span class="badge"><i style="font-size:13px;" class="material-icons">lock</i></i></span>');
                     }
                     html.push(generateSignalBars(w.signal)+' &nbsp; ' + w.networkName + '</a>');
                     $(".list-group.wifi").append(html.join(''));
@@ -33,17 +37,57 @@ function refreshWifiList() {
 
 function onWifiClick() {
     var networkName = $(this).data('networkname');
-    var netProtected = $(this).data('protected');
+    var isProtected = $(this).data('protected');
     
     $('#wifiPassword input[name=ssid]').val(networkName);
     $('#wifiPassword input[type=password]').val('');
-    
-    if (netProtected) {
-        $('#wifiPassword .modal-body strong').html(networkName);
+
+    $('#wifiPassword div.loading').addClass("hidden");
+    $('#wifiPassword div.done-message').addClass("hidden");
+    $('#wifiPassword div.modal-footer').addClass("hidden");
+
+    if (isProtected) {
+        $('#wifiPassword div.pre-message').removeClass("hidden");
         $('#wifiPassword').modal('show');
     } else {
-        $('#wifiPassword form').submit();
+        $('#wifiPassword div.pre-message').addClass("hidden");
+        $('#wifiPassword').modal('show');
+        connectToNetwork();
     }
+}
+
+function connectToNetwork() {
+    var ssid = $('#wifiPassword input[name=ssid]').val(),
+        password = $('#wifiPassword input[type=password]').val();
+
+    $('#wifiPassword div.pre-message').addClass("hidden");
+    $('#wifiPassword div.loading').removeClass("hidden");
+
+    $.ajax({
+        type: "POST",
+        url: '/settings/wifi-connect/',
+        data: {
+            ssid: ssid,
+            password: password
+        },
+        success: function(response) {
+            if (response.success) {
+                showMessage("Your board is now connected to the "+ssid+" Wi-Fi network.");
+            } else {
+                showMessage("Cannot connect to the network!");
+            }
+        },
+        error: function() {
+            debugger;
+            showMessage("Cannot connect to the network!");
+        }
+    });
+}
+
+function showMessage(errorText) {
+    $('#wifiPassword div.loading').addClass("hidden");
+    $('#wifiPassword div.modal-footer').removeClass("hidden");
+    $('#wifiPassword div.done-message').html(errorText).removeClass("hidden");
 }
 
 function generateSignalBars(signal) {

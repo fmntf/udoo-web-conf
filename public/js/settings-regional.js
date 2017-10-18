@@ -8,7 +8,7 @@ function autoSelectCountryOnLoad() {
     }
 }
 
-$(document).ready(function() {
+$(function() {
     $('#timezone-image').timezonePicker({
         target: '#edit-date-default-timezone',
         countryTarget: '#edit-site-default-country'
@@ -16,6 +16,10 @@ $(document).ready(function() {
     
     $('#timezone-detect').click(function() {
         $('#timezone-image').timezonePicker('detectLocation');
+    });
+
+    $("#save").click(function() {
+        saveTimezone();
     });
     
     $("#edit-site-default-country").on("autochange", function() {
@@ -51,15 +55,49 @@ $(document).ready(function() {
             });
         }
     });
-    
-    $("form").on("submit", function() {
-        var timezone = $("select[name=timezone]").val();
-        var country = $("select[name=country]").val();
-        var language = $("select[name=language]").val();
-        
-        if (!timezone || !country || !language) {
-            $('#regionalError').modal('show');
-            return false;
+});
+
+function saveTimezone() {
+    var timezone = $("select[name=timezone]").val();
+    var country = $("select[name=country]").val();
+    var language = $("select[name=language]").val();
+
+    if (!timezone || !country || !language) {
+        $('#tzSettings div.loading').addClass("hidden");
+        $('#tzSettings div.done-message').html("Please select a country and a time zone").removeClass("hidden");
+        $('#tzSettings div.modal-footer').removeClass("hidden");
+        $('#tzSettings').modal('show');
+        return false;
+    }
+
+    $('#tzSettings div.loading').removeClass("hidden");
+    $('#tzSettings div.done-message').addClass("hidden");
+    $('#tzSettings div.modal-footer').addClass("hidden");
+
+    $.ajax({
+        type: "POST",
+        url: '/settings/regional-update/',
+        data: {
+            timezone: timezone,
+            country: country,
+            language: language
+        },
+        success: function(response) {
+            if (response.success) {
+                showMessage("Regional settings updated.");
+            } else {
+                showMessage("Cannot save regional settings!");
+            }
+        },
+        error: function() {
+            debugger;
+            showMessage("Cannot save regional settings!");
         }
     });
-});
+}
+
+function showMessage(errorText) {
+    $('#tzSettings div.loading').addClass("hidden");
+    $('#tzSettings div.modal-footer').removeClass("hidden");
+    $('#tzSettings div.done-message').html(errorText).removeClass("hidden");
+}
