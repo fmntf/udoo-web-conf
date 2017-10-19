@@ -1,8 +1,4 @@
-﻿function arduinoMap(x, in_min, in_max, out_min, out_max) {
-    return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-}
-
-$(function() {
+﻿$(function() {
     var ws = new ReconnectingWebSocket('ws://' + location.hostname + ":8888");
     ws.onmessage = function (event) {
         var data = JSON.parse(event.data);
@@ -38,3 +34,18 @@ $(function() {
         $(".progress.magnetometer-modulus div").width(magn+"%");
     };
 });
+
+function arduinoMap(x, in_min, in_max, out_min, out_max) {
+    return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
+function initDonut(element, data, colors) {
+    Morris.Donut({
+        element: element,
+        data: data,
+        colors: colors,
+        formatter: function (y) {
+            return y
+        }
+    });
+}

@@ -114,3 +114,7 @@
 .theme-pink nav.navbar {
     background-color: #EC008C;
 }
+
+#sdcard_chart, #ram_chart {
+    height: 165px;
+}
