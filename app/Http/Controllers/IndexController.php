@@ -29,14 +29,14 @@ class IndexController extends Controller
             $ssid = trim($ssid[1]);
         }
 
-        exec("udooscreenctl get", $out, $status);
+        exec("udooscreenctl get", $screen, $status);
         if ($status === 0) {
-            $screen = strtoupper(trim($out[0]));
+            $screen = strtoupper(trim($screen[0]));
         } else {
             $screen = "Unknown";
         }
 
-        exec("ping -c 1 google.com", $out, $onlineStatus);
+        exec("ping -c 1 google.com", $ping, $onlineStatus);
         $this->enableMotionSensors();
 
         $temp = (int)trim(file_get_contents("/sys/class/thermal/thermal_zone0/temp"));
@@ -58,7 +58,7 @@ class IndexController extends Controller
         $ram = explode('   ', $ram[0]);
         $ram = ['total' => (int)$ram[0], 'free' => (int)$ram[1]];
 
-        exec('bash -c "cd websocket && php server.php"');
+        $process = proc_open("cd ../websocket && ./start.sh", [0 => ['pipe', 'r']], $pipes);
 
         return view('home', [
             'ethernet' => $ethernet,

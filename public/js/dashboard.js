@@ -1,5 +1,5 @@
 ﻿$(function() {
-    var ws = new ReconnectingWebSocket('ws://' + location.hostname + ":8888");
+    var ws = new ReconnectingWebSocket('ws://' + location.hostname + ":57120");
     ws.onmessage = function (event) {
         var data = JSON.parse(event.data);
         var tmp;
@@ -33,6 +33,7 @@
         var magn = arduinoMap(data.magnetometer.modulus, 0, 10000, 0, 100);
         $(".progress.magnetometer-modulus div").width(magn+"%");
     };
+    console.log(ws);
 });
 
 function arduinoMap(x, in_min, in_max, out_min, out_max) {

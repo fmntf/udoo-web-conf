@@ -92,7 +92,7 @@ class AppSocket implements MessageComponentInterface
 
 
 $app = new AppSocket;
-$server = IoServer::factory(new HttpServer(new WsServer($app)), 8888);
+$server = IoServer::factory(new HttpServer(new WsServer($app)), 57120);
 $app->setLoop($server->loop);
 
 $server->run();
