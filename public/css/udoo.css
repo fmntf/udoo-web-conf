@@ -110,3 +110,7 @@
 .sidebar .menu .list .ml-menu li.active a.toggled:not(.menu-toggle):before {
     top: -1px;
 }
+
+.theme-pink nav.navbar {
+    background-color: #EC008C;
+}

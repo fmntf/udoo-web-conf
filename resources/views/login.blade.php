@@ -17,7 +17,7 @@
 <body class="login-page">
 <div class="login-box">
     <div class="logo">
-        <a>{{ $_SESSION['board']['model'] }}</a>
+        <a>{{ $_SESSION['board']['shortmodel'] }}</a>
         <small>Web Control Panel</small>
     </div>
     <div class="card">

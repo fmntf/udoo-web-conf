@@ -6,7 +6,7 @@ $.AdminBSB = {};
 $.AdminBSB.options = {
     colors: {
         red: '#F44336',
-        pink: '#E91E63',
+        pink: '#EC008C',
         purple: '#9C27B0',
         deepPurple: '#673AB7',
         indigo: '#3F51B5',

@@ -36,7 +36,7 @@ void loop() {
 
         return response()->json([
             'success' => $status === 0 ? true : false,
-            'message' => implode(" ", $out)
+            'message' => implode("<br>", $out)
         ]);
     }
 

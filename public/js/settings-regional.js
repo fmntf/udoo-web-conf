@@ -73,6 +73,7 @@ function saveTimezone() {
     $('#tzSettings div.loading').removeClass("hidden");
     $('#tzSettings div.done-message').addClass("hidden");
     $('#tzSettings div.modal-footer').addClass("hidden");
+    $('#tzSettings').modal('show');
 
     $.ajax({
         type: "POST",

@@ -41,7 +41,7 @@
                 <div class="modal-body">
                     <div class="pre-message">
                         <p>Insert the password for the network <strong></strong>:</p>
-                        <form class="form-horizontal m-t-20">
+                        <div class="form-horizontal m-t-20">
                             <div class="row clearfix">
                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
                                     <label for="password">Password</label>
@@ -60,7 +60,7 @@
                                     <button type="button" id="connect" class="btn btn-primary m-t-15 m-b-20 waves-effect">CONNECT</button>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                     <div class="loading">Please wait...
                         <br><br><br>
