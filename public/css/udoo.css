@@ -118,3 +118,8 @@
 #sdcard_chart, #ram_chart {
     height: 165px;
 }
+
+#terminal {
+    border: 0;
+    width: 100%;
+}

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Laravel\Lumen\Routing\Controller;
 
-class ArduinoController extends BaseController
+class ArduinoController extends Controller
 {
     public function samples() {
         return view('arduino/samples');

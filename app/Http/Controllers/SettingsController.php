@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Laravel\Lumen\Routing\Controller;
 use Youssman\CountryLanguage\CountryLanguage;
 
-class SettingsController extends BaseController
+class SettingsController extends Controller
 {
     public function base() {
         return view('settings/base', [

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-class IndexController extends BaseController
+use Laravel\Lumen\Routing\Controller;
+
+class IndexController extends Controller
 {
     public function index() {
         return redirect(route('dashboard'));
@@ -55,6 +57,8 @@ class IndexController extends BaseController
         exec("free |grep Mem|awk '{print $2 \"   \" $3}'", $ram, $retval);
         $ram = explode('   ', $ram[0]);
         $ram = ['total' => (int)$ram[0], 'free' => (int)$ram[1]];
+
+        exec('bash -c "cd websocket && php server.php"');
 
         return view('home', [
             'ethernet' => $ethernet,

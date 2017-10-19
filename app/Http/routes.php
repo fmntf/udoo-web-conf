@@ -35,6 +35,10 @@ $app->get('/logout', [
     'as' => 'logout', 'uses' => 'LoginController@logout'
 ]);
 
+$app->get('/terminal', [
+    'as' => 'terminal', 'uses' => 'TerminalController@index'
+]);
+
 
 /* ARDUINO */
 
