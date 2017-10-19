@@ -33,7 +33,6 @@
         var magn = arduinoMap(data.magnetometer.modulus, 0, 10000, 0, 100);
         $(".progress.magnetometer-modulus div").width(magn+"%");
     };
-    console.log(ws);
 });
 
 function arduinoMap(x, in_min, in_max, out_min, out_max) {

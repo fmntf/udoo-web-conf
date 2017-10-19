@@ -56,9 +56,7 @@ class IndexController extends Controller
 
         exec("free |grep Mem|awk '{print $2 \"   \" $3}'", $ram, $retval);
         $ram = explode('   ', $ram[0]);
-        $ram = ['total' => (int)$ram[0], 'free' => (int)$ram[1]];
-
-        $process = proc_open("cd ../websocket && ./start.sh", [0 => ['pipe', 'r']], $pipes);
+        $ram = ['total' => (int)$ram[0], 'used' => (int)$ram[1]];
 
         return view('home', [
             'ethernet' => $ethernet,

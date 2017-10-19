@@ -281,10 +281,10 @@
             initDonut('ram_chart',
                 [{
                     label: 'Free',
-                    value: '{{ number_format($board['ram']['free']/1024) }} MB'
+                    value: '{{ number_format(($board['ram']['total']-$board['ram']['used'])/1024) }} MB'
                 }, {
                     label: 'Used',
-                    value: '{{ number_format(($board['ram']['total']-$board['ram']['free'])/1024) }} MB'
+                    value: '{{ number_format($board['ram']['used']/1024) }} MB'
                 }],
                 ['rgb(255, 193, 7)', 'rgb(255, 152, 0)']
             );

@@ -15,7 +15,7 @@
     <link href="/plugins/morrisjs/morris.css" rel="stylesheet" />
     <link href="/css/style.css" rel="stylesheet">
     <link href="/css/udoo.css" rel="stylesheet">
-    <link href="/css/themes/all-themes.css" rel="stylesheet" />
+    <link href="/css/themes/theme-pink.css" rel="stylesheet" />
 </head>
 
 <body class="theme-pink">
@@ -42,10 +42,6 @@
                 <div class="btn-group user-helper-dropdown">
                     <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                     <ul class="dropdown-menu pull-right">
-                        <!--
-                        <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
-                        <li role="seperator" class="divider"></li>
-                        -->
                         <li><a href="/logout"><i class="material-icons">input</i>Sign Out</a></li>
                     </ul>
                 </div>
@@ -165,16 +161,8 @@
 <script src="/plugins/bootstrap/js/bootstrap.js"></script>
 <script src="/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 <script src="/plugins/node-waves/waves.js"></script>
-<script src="/plugins/jquery-countto/jquery.countTo.js"></script>
-<script src="/plugins/raphael/raphael.min.js"></script>
 <script src="/plugins/morrisjs/morris.js"></script>
-<script src="/plugins/chartjs/Chart.bundle.js"></script>
-<script src="/plugins/flot-charts/jquery.flot.js"></script>
-<script src="/plugins/flot-charts/jquery.flot.resize.js"></script>
-<script src="/plugins/flot-charts/jquery.flot.pie.js"></script>
-<script src="/plugins/flot-charts/jquery.flot.categories.js"></script>
-<script src="/plugins/flot-charts/jquery.flot.time.js"></script>
-<script src="/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+<script src="/plugins/raphael/raphael.min.js"></script>
 
 <script src="/js/admin.js"></script>
 @yield('scripts')
