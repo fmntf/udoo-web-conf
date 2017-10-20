@@ -123,3 +123,11 @@
     border: 0;
     width: 100%;
 }
+
+.terminal-preloader {
+    margin: auto;
+}
+
+.terminal-preloader .preloader {
+    top: 30%;
+}

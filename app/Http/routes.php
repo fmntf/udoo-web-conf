@@ -123,3 +123,14 @@ $app->post('/settings/set-m4', [
 $app->post('/settings/set-http-port', [
     'as' => 'settings-sethttpport', 'uses' => 'SettingsController@sethttpport'
 ]);
+
+
+/* SERVICES */
+
+$app->get('/services/websocket', [
+    'as' => 'services-websocket', 'uses' => 'ServicesController@websocket'
+]);
+
+$app->get('/services/terminal', [
+    'as' => 'services-terminal', 'uses' => 'ServicesController@terminal'
+]);

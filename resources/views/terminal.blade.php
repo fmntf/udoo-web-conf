@@ -11,7 +11,21 @@
                     <h2>TERMINAL</h2>
                 </div>
                 <div class="body">
-                    <iframe id="terminal"></iframe>
+                    <div class="terminal-preloader text-center">
+                        <div class="preloader pl-size-xl">
+                            <div class="spinner-layer pl-pink">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <iframe id="terminal" class="hidden"></iframe>
                 </div>
             </div>
         </div>

@@ -78,7 +78,6 @@ function connectToNetwork() {
             }
         },
         error: function() {
-            debugger;
             showMessage("Cannot connect to the network!");
         }
     });

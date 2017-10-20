@@ -75,7 +75,6 @@ $app->middleware([
 */
 
 $app->register(App\Providers\BoardServiceProvider::class);
-$app->register(App\Providers\WebsocketServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
