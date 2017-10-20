@@ -49,7 +49,7 @@
                 </div>
                 <div class="content">
                     <div class="text">UDOO IoT</div>
-                    <div class="number">Dragons</div>
+                    <div class="number">{{ $iot['status'] }}</div>
                 </div>
             </div>
         </div>
@@ -115,6 +115,43 @@
                                 </table>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-xs-12">
+            <div class="card">
+                <div class="body home-tips">
+
+                    @if ($default_password)
+                        <div class="alert bg-red alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            Warning! You have logged in with the default password. Anyone with physical or network access to your board could get in.
+                            <a href="{{ route('settings-base') }}">Change board passwords</a> now!
+                        </div>
+                    @endif
+
+                    @if ($iot['status'] == 'Not logged in')
+                        <div class="alert bg-teal alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            Your board is not enrolled in the UDOO IoT cloud.
+                            <a href="{{ route('iot-register') }}">Register your board</a> now to control it remotely.
+                        </div>
+                    @endif
+
+                    <div class="alert alert-warning alert-dismissible updates-available" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        There are updates available for {{ $board['os'] }}.
+                        <a href="{{ route('settings-updates') }}">Install the updates</a> now.
+                    </div>
+
+                    <div class="alert bg-green alert-dismissible no-updates hidden" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        {{ $board['os'] }} is updated. Great!
                     </div>
                 </div>
             </div>

@@ -117,13 +117,24 @@ $app->get('/settings/advanced', [
 $app->post('/settings/set-video', [
     'as' => 'settings-setvideo', 'uses' => 'SettingsController@setvideo'
 ]);
+
 $app->post('/settings/set-m4', [
     'as' => 'settings-setm4', 'uses' => 'SettingsController@setm4'
 ]);
+
 $app->post('/settings/set-http-port', [
     'as' => 'settings-sethttpport', 'uses' => 'SettingsController@sethttpport'
 ]);
 
+$app->get('/settings/updates', [
+    'as' => 'settings-updates', 'uses' => 'SettingsController@updates'
+]);
+
+
+/* IOT */
+$app->get('/iot/register', [
+    'as' => 'iot-register', 'uses' => 'IotController@register'
+]);
 
 /* SERVICES */
 

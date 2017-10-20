@@ -131,3 +131,13 @@
 .terminal-preloader .preloader {
     top: 30%;
 }
+
+.alert a {
+    color: white;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.home-tips {
+    padding-bottom: 1px !important;
+}

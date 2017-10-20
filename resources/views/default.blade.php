@@ -119,7 +119,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/settings/iot">
+                    <a href="/iot/index">
                         <i class="material-icons">cloud</i>
                         <span>UDOO Cloud</span>
                     </a>

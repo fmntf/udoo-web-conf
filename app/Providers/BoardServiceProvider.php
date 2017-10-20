@@ -91,8 +91,8 @@ class BoardServiceProvider extends ServiceProvider
     }
 
     private function getIMXCpuID() {
-        $H = file_get_contents("/sys/fsl_otp/HW_OCOTP_CFG0");
-        $L = file_get_contents("/sys/fsl_otp/HW_OCOTP_CFG1");
+        $H = trim(file_get_contents("/sys/fsl_otp/HW_OCOTP_CFG0"));
+        $L = trim(file_get_contents("/sys/fsl_otp/HW_OCOTP_CFG1"));
 
         $H = str_replace("0x", "", $H);
         $L = str_replace("0x", "", $L);
