@@ -33,7 +33,7 @@ void loop() {
     }
 
     public function uploadsketch($sketch) {
-        exec("/usr/bin/udooneo-m4uploader " . app()->basePath() . "/arduino_examples/" . $sketch . ".cpp.bin", $out, $status);
+        exec("/usr/bin/udooneo-m4uploader " . app()->basePath() . "/arduino/examples/" . $sketch . ".bin", $out, $status);
 
         return response()->json([
             'success' => $status === 0 ? true : false,
@@ -61,16 +61,16 @@ void loop() {
 
     public function ardublocklycompile(Request $request) {
         $code = $request->request->get("sketch_code");
-        file_put_contents(app()->basePath() . "/mysketch/mysketch.ino", $code);
+        file_put_contents($this->getSketchPath(), $code);
 
         return $this->compilesketch();
     }
 
     private function getSketchPath() {
-        $dir = app()->basePath() ."/mysketch";
+        $dir = app()->basePath() ."/arduino/sketch";
         if (!is_dir($dir)) {
             mkdir($dir);
         }
-        return $dir . "/mysketch.ino";
+        return $dir . "/sketch.ino";
     }
 }
