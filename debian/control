@@ -1,0 +1,15 @@
+Source: udoo-wcp
+Section: utils
+Priority: optional
+Maintainer: Francesco Montefoschi <francesco.montefoschi@udoo.org>
+Build-Depends: debhelper (>= 9.0.0)
+Standards-Version: 3.9.5
+Homepage: https://www.udoo.org
+Vcs-Browser: https://github.com/UDOOboard/udoo-web-conf/
+
+Package: udoo-wcp
+Architecture: all
+Depends: ${misc:Depends}, udoo-web-docs, php-cli | php5-cli | php7-cli | php7.1-cli, network-manager, dtweb, ttyd
+Description: UDOO Web Control Panel
+ This tool is designed to allow easy configuration and act as an handy web-based
+ control panel for UDOO boards.

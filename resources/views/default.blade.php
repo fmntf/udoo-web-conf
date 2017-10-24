@@ -133,7 +133,7 @@
                 <li class="header">SUPPORT</li>
 
                 <li>
-                    <a href="/docs">
+                    <a href="/docs/Introduction/Introduction.html">
                         <i class="material-icons">help</i>
                         <span>Documentation</span>
                     </a>

@@ -1,0 +1,11 @@
+app                   /opt/udoo-wcp
+bin                   /opt/udoo-wcp
+bootstrap             /opt/udoo-wcp
+public                /opt/udoo-wcp
+resources             /opt/udoo-wcp
+storage               /opt/udoo-wcp
+vendor                /opt/udoo-wcp
+.env                  /opt/udoo-wcp
+
+debian/*.desktop      /usr/share/applications
+debian/pixmaps/*.png  /usr/share/pixmaps
