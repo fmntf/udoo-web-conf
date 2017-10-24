@@ -6,9 +6,6 @@
 description "UDOO Neo Web Configurator"
 author "UDOO Team <social@udoo.org>"
 
-env USER=root
-env PATH=/sbin:/bin:/usr/bin:/usr/sbin
-
 start on local-filesystems
 stop on [06]
 
@@ -19,7 +16,6 @@ script
   chdir /opt/udoo-wcp/public
   exec start-stop-daemon --chdir /opt/udoo-wcp/public \
     --chuid root \
-    --start --make-pidfile \
-    --pidfile /var/run/udoo-wcp.pid \
-    --exec php -- -S 0.0.0.0:$(cat /etc/udoo-wcp/port)
+    --start \
+    --exec /usr/bin/php -- -S 0.0.0.0:$(cat /etc/udoo-wcp/port)
 end script

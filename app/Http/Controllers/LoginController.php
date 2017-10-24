@@ -12,18 +12,18 @@ class LoginController extends Controller
     }
 
     public function login(Request $request) {
-
         $username = trim($request->get('username'));
         $password = trim($request->get('password'));
-        if ($username === $password && $password === 'udooer') {
-            $_SESSION['default_password'] = true;
-        }
-        $password = '"' . str_replace('"', '\"', $password) . '"';
+        $quotedPassword = '"' . str_replace('"', '\"', $password) . '"';
+        $_SESSION['default_password'] = false;
 
-        exec("python " . app()->basePath() . "/bin/pam.py $username $password", $out, $ret);
+        exec("python " . app()->basePath() . "/bin/pam.py $username $quotedPassword", $out, $ret);
 
         if ($ret === 0) {
             $_SESSION['auth'] = true;
+            if ($username === $password && $password === 'udooer') {
+                $_SESSION['default_password'] = true;
+            }
             return redirect(route('index'));
         } else {
             return view('login', [
@@ -34,7 +34,6 @@ class LoginController extends Controller
 
     public function logout() {
         $_SESSION['auth'] = false;
-        $_SESSION['default_password'] = false;
         return redirect(route('login'));
     }
 }
