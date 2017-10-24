@@ -34,6 +34,7 @@ class LoginController extends Controller
 
     public function logout() {
         $_SESSION['auth'] = false;
+        $_SESSION['default_password'] = false;
         return redirect(route('login'));
     }
 }

@@ -126,10 +126,6 @@ $app->post('/settings/set-http-port', [
     'as' => 'settings-sethttpport', 'uses' => 'SettingsController@sethttpport'
 ]);
 
-$app->get('/settings/updates', [
-    'as' => 'settings-updates', 'uses' => 'SettingsController@updates'
-]);
-
 
 /* IOT */
 $app->get('/iot/register', [
@@ -155,6 +151,15 @@ $app->get('/power/poweroff-action', [
 ]);
 
 
+/* UPDATES */
+$app->get('/updates/check', [
+    'as' => 'updates-check', 'uses' => 'UpdatesController@check'
+]);
+
+$app->get('/settings/advanced-install', [
+    'as' => 'updates-install', 'uses' => 'UpdatesController@install'
+]);
+
 /* SERVICES */
 
 $app->get('/services/websocket', [
@@ -163,4 +168,8 @@ $app->get('/services/websocket', [
 
 $app->get('/services/terminal', [
     'as' => 'services-terminal', 'uses' => 'ServicesController@terminal'
+]);
+
+$app->get('/services/updates', [
+    'as' => 'services-updates', 'uses' => 'ServicesController@updates'
 ]);

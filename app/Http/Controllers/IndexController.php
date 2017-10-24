@@ -28,7 +28,6 @@ class IndexController extends Controller
         }
 
         exec("ping -c 1 google.com", $ping, $onlineStatus);
-        $this->enableMotionSensors();
 
         return view('home', [
             'ethernet' => $connections->getEthernetAddress(),
@@ -52,18 +51,15 @@ class IndexController extends Controller
                 'ram' => $stats->getRamUsage(),
             ],
             'default_password' => array_key_exists('default_password', $_SESSION) && $_SESSION['default_password'] === true,
+            'updates' => $this->getUpdates(),
         ]);
     }
 
-    private function enableMotionSensors() {
-        foreach ([
-            "/sys/class/misc/FreescaleGyroscope/enable",
-            "/sys/class/misc/FreescaleAccelerometer/enable",
-            "/sys/class/misc/FreescaleMagnetometer/enable",
-        ] as $sensor) {
-            if (file_exists($sensor)) {
-                file_put_contents($sensor, 1);
-            }
+    private function getUpdates() {
+        if (array_key_exists('updates', $_SESSION)) {
+            return $_SESSION['updates'];
+        } else {
+            return 'check';
         }
     }
 }

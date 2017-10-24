@@ -18,10 +18,12 @@ class SettingsController extends Controller
         $username = $request->request->get("username");
         $password = $request->request->get("password");
 
-        exec("$username:$password | chpasswd", $out, $retval);
+        exec("echo $username:$password | chpasswd", $out, $retval);
         if ($username === 'udooer') {
             exec("x11vnc -storepasswd $password /etc/x11vnc.pass");
         }
+
+        $_SESSION['default_password'] = false;
 
         return response()->json([
             'success' => $retval === 0

@@ -5,6 +5,16 @@
     });
 
     setTimeout(startWS, 1000);
+
+    if (updatesAvailable === "check") {
+        $.ajax({
+            type: "GET",
+            url: '/updates/check/',
+            success: function(response) {
+
+            }
+        });
+    }
 });
 
 function startWS() {

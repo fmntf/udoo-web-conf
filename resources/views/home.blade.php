@@ -142,17 +142,27 @@
                         </div>
                     @endif
 
-                    <div class="alert alert-warning alert-dismissible updates-available" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                        There are updates available for {{ $board['os'] }}.
-                        <a href="{{ route('settings-updates') }}">Install the updates</a> now.
-                    </div>
-
-                    <div class="alert bg-green alert-dismissible no-updates hidden" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                        {{ $board['os'] }} is updated. Great!
-                    </div>
-                </div>
+                    @if (is_int($updates))
+                        @if ($updates == 0)
+                            <div class="alert bg-green alert-dismissible no-updates" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                {{ $board['os'] }} is updated.
+                            </div>
+                        @else
+                            <div class="alert alert-warning alert-dismissible updates-available" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                There are <span class="nr">{{ $updates }}</span> updates available for {{ $board['os'] }}.
+                                <a href="{{ route('updates-install') }}">Install the updates</a> now.
+                            </div>
+                        @endif
+                    @else
+                        <div class="alert alert-warning alert-dismissible updates-checking" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            Checking for updates...
+                        </div>
+                    @endif
+                    <script>updatesAvailable = "{{$updates}}";</script>
+               </div>
             </div>
         </div>
 
@@ -301,7 +311,6 @@
     <script src="/js/reconnecting-websocket.js"></script>
     <script src="/js/dashboard.js"></script>
     <script>
-
         $(function() {
             initDonut('sdcard_chart',
                 [{
@@ -325,7 +334,5 @@
                 ['rgb(255, 193, 7)', 'rgb(255, 152, 0)']
             );
         });
-
-
     </script>
 @endsection

@@ -21,6 +21,7 @@ class AppSocket implements MessageComponentInterface
 
     public function __construct() {
         $this->clients = new \SplObjectStorage;
+        $this->enableMotionSensors();
     }
 
     public function setLoop(\React\EventLoop\LoopInterface $loop) {
@@ -86,6 +87,18 @@ class AppSocket implements MessageComponentInterface
             'modulus' => $modulus,
             'axis' => $axis
         ];
+    }
+
+    private function enableMotionSensors() {
+        foreach ([
+                     "/sys/class/misc/FreescaleGyroscope/enable",
+                     "/sys/class/misc/FreescaleAccelerometer/enable",
+                     "/sys/class/misc/FreescaleMagnetometer/enable",
+                 ] as $sensor) {
+            if (file_exists($sensor)) {
+                file_put_contents($sensor, 1);
+            }
+        }
     }
 }
 
