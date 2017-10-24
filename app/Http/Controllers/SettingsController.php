@@ -212,14 +212,42 @@ class SettingsController extends Controller
     }
 
     public function setvideo(Request $request) {
+        $video = $request->request->get("video");
+        exec("udooscreenctl set $video", $out, $status);
 
+        return response()->json([
+            'success' => $status === 0
+        ]);
     }
 
     public function setm4(Request $request) {
+        $m4 = $request->request->get("m4");
+        if ($m4 === 'enabled') {
+            exec("udoom4ctl enable", $out, $status);
+        } else {
+            exec("udoom4ctl disable", $out, $status);
+        }
 
+        return response()->json([
+            'success' => $status === 0
+        ]);
     }
 
     public function sethttpport(Request $request) {
+        $port = $request->request->get("port");
+        $override = "/etc/init/udoo-web-conf.override";
 
+        if ($port == "-1") {
+            file_put_contents($override, "manual");
+        } else {
+            file_put_contents("/etc/udoo-web-conf/port", (int)$port);
+            if (file_exists($override)) {
+                unlink($override);
+            }
+        }
+
+        return response()->json([
+            'success' => true
+        ]);
     }
 }
