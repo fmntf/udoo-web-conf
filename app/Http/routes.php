@@ -136,6 +136,25 @@ $app->get('/iot/register', [
     'as' => 'iot-register', 'uses' => 'IotController@register'
 ]);
 
+
+/* POWER */
+$app->get('/power/reboot', [
+    'as' => 'power-reboot', 'uses' => 'PowerController@reboot'
+]);
+
+$app->get('/power/reboot-action', [
+    'as' => 'power-reboot-action', 'uses' => 'PowerController@rebootaction'
+]);
+
+$app->get('/power/poweroff', [
+    'as' => 'power-poweroff', 'uses' => 'PowerController@poweroff'
+]);
+
+$app->get('/power/poweroff-action', [
+    'as' => 'power-poweroff-action', 'uses' => 'PowerController@poweroffaction'
+]);
+
+
 /* SERVICES */
 
 $app->get('/services/websocket', [

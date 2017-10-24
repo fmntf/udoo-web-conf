@@ -63,24 +63,16 @@
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="/arduino/samples">
-                                <span>Samples</span>
-                            </a>
+                            <a href="/arduino/samples"><span>Samples</span></a>
                         </li>
                         <li>
-                            <a href="/arduino/webide">
-                                <span>Web Editor</span>
-                            </a>
+                            <a href="/arduino/webide"><span>Web Editor</span></a>
                         </li>
                         <li>
-                            <a href="/arduino/ardublockly">
-                                <span>Ardublockly</span>
-                            </a>
+                            <a href="/arduino/ardublockly"><span>Ardublockly</span></a>
                         </li>
                         <li>
-                            <a href="/arduino/appinventor">
-                                <span>App Inventor</span>
-                            </a>
+                            <a href="/arduino/appinventor"><span>App Inventor</span></a>
                         </li>
                     </ul>
                 </li>
@@ -90,6 +82,19 @@
                         <i class="material-icons">subject</i>
                         <span>Terminal</span>
                     </a>
+                </li>
+
+                <li>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" type="button" id="powermenu" data-toggle="dropdown">
+                            <i class="material-icons">settings_power</i>
+                            <span>Shut Down</span>
+                        </a>
+                        <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="powermenu">
+                            <li><a href="/power/poweroff">Power off</a></li>
+                            <li><a href="/power/reboot">Reboot</a></li>
+                        </ul>
+                    </div>
                 </li>
 
                 <li class="header">SETTINGS</li>

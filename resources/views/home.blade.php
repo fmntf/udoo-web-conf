@@ -126,7 +126,6 @@
         <div class="col-xs-12">
             <div class="card">
                 <div class="body home-tips">
-
                     @if ($default_password)
                         <div class="alert bg-red alert-dismissible" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
