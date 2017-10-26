@@ -39,7 +39,7 @@
                     @if (!$loggedid)
                         <div class="alert alert-warning m-t-30" role="alert">
                             Your board is not enrolled in the UDOO IoT cloud.
-                            <a href="{{ route('iot-register') }}">Register your board</a> now to control it using App Inventor.
+                            <a href="{{ route('iot-register') }}">Register your board</a> before using it with App Inventor.
                         </div>
                     @endif
 

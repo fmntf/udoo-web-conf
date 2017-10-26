@@ -15,7 +15,7 @@
                     <i class="material-icons">wifi</i>
                 </div>
                 <div class="content">
-                    <div class="text">Wi-Fi {{ $ssid }}</div>
+                    <div class="text">Wi-Fi <b>{{ $ssid }}</b></div>
                     <div class="number">{{ $wlan }}</div>
                 </div>
             </div>

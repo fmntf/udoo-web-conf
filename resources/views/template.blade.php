@@ -102,13 +102,19 @@
                 <li>
                     <a href="/settings/base">
                         <i class="material-icons">vpn_key</i>
-                        <span>Password and Hostname</span>
+                        <span>Password and Board Name</span>
                     </a>
                 </li>
                 <li>
                     <a href="/settings/network">
                         <i class="material-icons">network_wifi</i>
                         <span>Connect to Wi-Fi</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/iot">
+                        <i class="material-icons">cloud</i>
+                        <span>UDOO IoT</span>
                     </a>
                 </li>
                 <li>
@@ -123,17 +129,11 @@
                         <span>Advanced</span>
                     </a>
                 </li>
-                <li>
-                    <a href="/iot">
-                        <i class="material-icons">cloud</i>
-                        <span>UDOO IoT</span>
-                    </a>
-                </li>
 
                 <li class="header">SUPPORT</li>
 
                 <li>
-                    <a href="/docs/Introduction/Introduction.html">
+                    <a href="/docs/Introduction/Introduction.html" target="_blank">
                         <i class="material-icons">help</i>
                         <span>Documentation</span>
                     </a>
@@ -168,7 +168,6 @@
 <script src="/plugins/node-waves/waves.min.js"></script>
 <script src="/plugins/morrisjs/morris.min.js"></script>
 <script src="/plugins/raphael/raphael.min.js"></script>
-
 <script src="/js/admin.js"></script>
 @yield('scripts')
 </body>

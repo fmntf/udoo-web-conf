@@ -5,7 +5,7 @@
     $("#blink").on("click", function() {
         flashSketch("Blink");
     });
-    
+
     $.each(["example-blink", "example-fade"], function(index, id) {
         var editor = ace.edit(id);
         editor.setHighlightActiveLine(false);
