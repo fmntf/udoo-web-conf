@@ -123,10 +123,32 @@
         <div class="col-xs-12 col-sm-12 col-md-6">
             <div class="card">
                 <div class="header">
+                    <h2>AUTOSTART SCRIPT</h2>
+                </div>
+                <div class="body">
+                    <p>The following script will be executed at board startup with <b>root</b> privileges:</p>
+
+                    <form class="form-horizontal m-t-20">
+                        <pre style="height:87px;" id="editor">{{ $autostart }}</pre>
+
+                        <div class="row clearfix">
+                            <div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-4 col-xs-offset-5">
+                                <button type="button" id="autostart" class="btn btn-primary m-t-15 m-b-20 waves-effect">SAVE</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-6">
+            <div class="card">
+                <div class="header">
                     <h2>WEB CONTROL PANEL</h2>
                 </div>
                 <div class="body">
-                    <p>Move this tool to a different port before installing a web server. You need to reboot your UDOO board to apply the changes.<br>
+                    <p>Move this tool to a different port before installing a web server.<br>
+                        You need to reboot your UDOO board to apply the changes.<br>
                         If you disable Web Control Panel, remove <code>/etc/init/udoo-wcp.override</code> to re-enable it.</p>
 
                     <form class="form-horizontal m-t-20">
@@ -215,5 +237,6 @@
 @endsection
 
 @section('scripts')
+    <script src="/plugins/ace/ace.js" type="text/javascript"></script>
     <script type="text/javascript" src="/js/settings-advanced.js"></script>
 @endsection

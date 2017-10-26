@@ -1,6 +1,6 @@
 ﻿$(function() {
     var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/chrome");
+    editor.setTheme("ace/theme/dawn");
     editor.session.setMode("ace/mode/c_cpp");
     editor.setOptions({
         fontSize: "13pt"

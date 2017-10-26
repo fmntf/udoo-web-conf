@@ -29,7 +29,7 @@
                 </div>
                 <div class="body">
                     <p>Connect a LED to PIN 13 to see it blinking!</p>
-                    <pre>
+                    <pre style="height:320px;" id="example-blink">
 int led = 13;
 
 void setup() {
@@ -44,7 +44,7 @@ void loop() {
   digitalWrite(led, LOW);
   delay(1000);
 }
-                    </pre>
+</pre>
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@ void loop() {
                 </div>
                 <div class="body">
                     <p>Connect a LED to PIN 9 to see it fade in and out!</p>
-                    <pre>
+                    <pre style="height:320px;" id="example-fade">
 int led = 9;
 int brightness = 0;
 int fadeAmount = 5;
@@ -74,7 +74,7 @@ void loop() {
 
   delay(30);
 }
-                    </pre>
+</pre>
                 </div>
             </div>
         </div>
@@ -116,5 +116,6 @@ void loop() {
 @endsection
 
 @section('scripts')
+    <script src="/plugins/ace/ace.js" type="text/javascript"></script>
     <script src="/js/arduino-samples.js"></script>
 @endsection

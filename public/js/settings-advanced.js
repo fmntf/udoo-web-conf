@@ -63,17 +63,45 @@ $(function() {
         });
     });
 
-    function showMessage(errorText) {
-        $('#waitDialog div.loading').addClass("hidden");
-        $('#waitDialog div.modal-footer').removeClass("hidden");
-        $('#waitDialog div.done-message').html(errorText).removeClass("hidden");
-    }
+    $("#autostart").on("click", function() {
+        showDialog();
+        $.ajax({
+            type: "POST",
+            url: '/settings/set-autostart/',
+            data: {
+                script: ace.edit("editor").getValue().replace(/[^\040-\176\200-\377]/gi, "\n")
+            },
+            success: function(response) {
+                if (response.success) {
+                    showMessage("Autostart script saved successfully.");
+                } else {
+                    showMessage("Cannot save autostart script!");
+                }
+            },
+            error: function() {
+                showMessage("Cannot save autostart script!");
+            }
+        });
+    });
 
-    function showDialog() {
-        $('#waitDialog div.loading').removeClass("hidden");
-        $('#waitDialog div.done-message').addClass("hidden");
-        $('#waitDialog div.modal-footer').addClass("hidden");
-        $('#waitDialog').modal('show');
-    }
-
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/dawn");
+    editor.session.setMode("ace/mode/sh");
+    editor.setOptions({
+        fontSize: "13pt"
+    });
+    editor.gotoLine(editor.session.getLength());
 });
+
+function showMessage(errorText) {
+    $('#waitDialog div.loading').addClass("hidden");
+    $('#waitDialog div.modal-footer').removeClass("hidden");
+    $('#waitDialog div.done-message').html(errorText).removeClass("hidden");
+}
+
+function showDialog() {
+    $('#waitDialog div.loading').removeClass("hidden");
+    $('#waitDialog div.done-message').addClass("hidden");
+    $('#waitDialog div.modal-footer').addClass("hidden");
+    $('#waitDialog').modal('show');
+}

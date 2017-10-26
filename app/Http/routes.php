@@ -118,6 +118,10 @@ $app->post('/settings/set-http-port', [
     'as' => 'settings-sethttpport', 'uses' => 'SettingsController@sethttpport'
 ]);
 
+$app->post('/settings/set-autostart', [
+    'as' => 'settings-setautostart', 'uses' => 'SettingsController@setautostart'
+]);
+
 
 /* IOT */
 $app->get('/iot', [

@@ -203,6 +203,12 @@ class SettingsController extends Controller
             }
         }
 
+        if (file_exists("/udoo-autostart.sh")) {
+            $autostart = file_get_contents("/udoo-autostart.sh");
+        } else {
+            $autostart = "#!/bin/bash" . PHP_EOL;
+        }
+
         return view('settings/advanced', [
             'saved' => array_key_exists('saved', $_GET),
             'video' => $screen,
@@ -210,6 +216,7 @@ class SettingsController extends Controller
             'hasM4' => $_SESSION['board']['supports']['m4'],
             'm4' => $m4 == 'true' ? 'enabled' : 'disabled',
             'port'=> $port,
+            'autostart' => $autostart,
         ]);
     }
 
@@ -247,6 +254,17 @@ class SettingsController extends Controller
                 unlink($override);
             }
         }
+
+        return response()->json([
+            'success' => true
+        ]);
+    }
+
+    public function setautostart(Request $request) {
+        $script = $request->request->get("script");
+
+        file_put_contents("/udoo-autostart.sh", $script);
+        chmod("/udoo-autostart.sh", 0770);
 
         return response()->json([
             'success' => true
