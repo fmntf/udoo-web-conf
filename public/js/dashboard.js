@@ -19,7 +19,6 @@
 
 function startWS() {
     var ws = new ReconnectingWebSocket('ws://' + location.hostname + ":57120");
-    console.log(ws);
     ws.onmessage = function (event) {
         var data = JSON.parse(event.data);
         if ($("#motionsensorsmod").css('display') === 'none') {

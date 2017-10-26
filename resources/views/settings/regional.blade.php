@@ -14,8 +14,8 @@
                     <p>Click on your country on the map to select your regional settings. Then click the Update button.</p>
 
                     <div id="timezone-picker" style="text-align:center;">
-                        <img id="timezone-image" src="/timezonepicker/images/gray-800.png" width="800" height="400" usemap="#timezone-map" />
-                        <img class="timezone-pin" src="/timezonepicker/images/pin.png" style="padding-top: 4px;" />
+                        <img id="timezone-image" src="/plugins/timezonepicker/images/gray-800.png" width="800" height="400" usemap="#timezone-map" />
+                        <img class="timezone-pin" src="/plugins/timezonepicker/images/pin.png" style="padding-top: 4px;" />
                         <map name="timezone-map" id="timezone-map">
                             <area data-timezone="Africa/Abidjan" data-country="CI" data-pin="391,188" data-offset="0" shape="poly" coords="386,189,383,190,384,187,381,186,381,183,382,182,382,181,383,181,382,178,386,176,386,177,389,177,390,179,393,178,394,182,393,185,394,189,386,189" />
                             <area data-timezone="Africa/Accra" data-country="GH" data-pin="400,188" data-offset="0" shape="poly" coords="402,187,395,189,393,189,394,188,393,185,394,182,394,176,400,175,402,181,401,185,403,186,402,187" />
@@ -560,8 +560,8 @@
 @endsection
 
 @section('scripts')
-    <script type="text/javascript" src="/timezonepicker/jquery.maphilight.js"></script>
-    <script type="text/javascript" src="/timezonepicker/jquery.timezone-picker.js"></script>
+    <script type="text/javascript" src="/plugins/timezonepicker/jquery.maphilight.js"></script>
+    <script type="text/javascript" src="/plugins/timezonepicker/jquery.timezone-picker.js"></script>
     <script type="text/javascript" src="/js/settings-regional.js"></script>
     @if ($defaultTimezone == false)
         <script>

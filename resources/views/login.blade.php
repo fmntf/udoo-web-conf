@@ -8,9 +8,9 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link href="/fonts/roboto/roboto.css" rel="stylesheet" type="text/css">
     <link href="/fonts/iconfont/material-icons.css" rel="stylesheet" type="text/css">
-    <link href="/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="/plugins/node-waves/waves.css" rel="stylesheet" />
-    <link href="/plugins/animate-css/animate.css" rel="stylesheet" />
+    <link href="/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/plugins/node-waves/waves.min.css" rel="stylesheet" />
+    <link href="/plugins/animate-css/animate.min.css" rel="stylesheet" />
     <link href="/css/style.css" rel="stylesheet">
 </head>
 
@@ -63,11 +63,9 @@
 </div>
 
 <script src="/plugins/jquery/jquery.min.js"></script>
-<script src="/plugins/bootstrap/js/bootstrap.js"></script>
-<script src="/plugins/node-waves/waves.js"></script>
-<script src="/plugins/jquery-validation/jquery.validate.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/plugins/node-waves/waves.min.js"></script>
 <script src="/js/admin.js"></script>
-<script src="/js/login.js"></script>
 </body>
 
 </html>
