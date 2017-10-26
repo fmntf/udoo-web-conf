@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\IoT;
 use Illuminate\Http\Request;
 use Laravel\Lumen\Routing\Controller;
 
@@ -29,7 +30,11 @@ void loop() {
     }
 
     public function appinventor() {
-        return view('arduino/appinventor');
+        $iot = new IoT();
+
+        return view('arduino/appinventor', [
+            'loggedid' => $iot->getStatus() != 'Not logged in',
+        ]);
     }
 
     public function uploadsketch($sketch) {

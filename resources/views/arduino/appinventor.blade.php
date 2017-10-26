@@ -11,12 +11,38 @@
                     <h2>
                         APP INVENTOR
                     </h2>
+                    <br>
+                    Develop an Android application to control your {{ $_SESSION['board']['shortmodel'] }} using the UDOO IoT extension for App Inventor.
                 </div>
                 <div class="body">
-                    <p>Develop an Android application to control your {{ $_SESSION['board']['shortmodel'] }} using the UDOO IoT extension for App Inventor.</p>
-                    <p>Your board must be registered in the UDOO IoT Cloud. If you have not registered your board yet, do it now!</p>
 
-                    <a href="http://ai2.appinventor.mit.edu" target="_blank" class="btn bg-pink waves-effect">OPEN APP INVENTOR 2</a>
+                    <h4>What is App Inventor?</h4>
+                    <p>MIT App Inventor is an intuitive, visual programming environment that allows everyone - even
+                        children - to build fully functional apps for smartphones and tablets. Those new to MIT App
+                        Inventor can have a simple first app up and running in less than 30 minutes. And what's more,
+                        our blocks-based tool facilitates the creation of complex, high-impact apps in significantly
+                        less time than traditional programming environments. The MIT App Inventor project seeks to
+                        democratize software development by empowering all people, especially young people, to move
+                        from technology consumption to technology creation.</p>
+                    <br>
+
+                    <h4>UDOO IoT Extension</h4>
+                    <p>Download the UDOO IoT extension to develop App Inventor applications able to control your board.</p>
+                    <p>Import the extension using the <i>Import Extension</i> link in the Components Palette.</p>
+
+                    <div class="text-center m-t-30 m-b-10">
+                        <a href="https://www.udoo.org/appinventor/udoo-iot-extension.aix" class="btn bg-pink waves-effect">DOWNLOAD UDOO EXTENSION</a>
+                        &nbsp; &nbsp; &nbsp;
+                        <a href="http://ai2.appinventor.mit.edu" target="_blank" class="btn bg-pink waves-effect">OPEN APP INVENTOR 2</a>
+                    </div>
+
+                    @if (!$loggedid)
+                        <div class="alert alert-warning m-t-30" role="alert">
+                            Your board is not enrolled in the UDOO IoT cloud.
+                            <a href="{{ route('iot-register') }}">Register your board</a> now to control it using App Inventor.
+                        </div>
+                    @endif
+
                 </div>
             </div>
         </div>
