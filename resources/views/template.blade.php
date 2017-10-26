@@ -124,9 +124,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/iot/index">
+                    <a href="/iot">
                         <i class="material-icons">cloud</i>
-                        <span>UDOO Cloud</span>
+                        <span>UDOO IoT</span>
                     </a>
                 </li>
 

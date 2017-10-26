@@ -1,4 +1,4 @@
-@extends('default')
+@extends('template')
 
 @section('title', 'UDOO Web Control Panel')
 
@@ -79,7 +79,7 @@
                                         <td class="text-right">{{ $board['model'] }}</td>
                                     </tr>
                                     <tr>
-                                        <td>ID</td>
+                                        <td>Serial Number</td>
                                         <td class="text-right">{{ $board['id'] }}</td>
                                     </tr>
                                     <tr>

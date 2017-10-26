@@ -120,6 +120,10 @@ $app->post('/settings/set-http-port', [
 
 
 /* IOT */
+$app->get('/iot', [
+    'as' => 'iot-index', 'uses' => 'IotController@index'
+]);
+
 $app->get('/iot/register', [
     'as' => 'iot-register', 'uses' => 'IotController@register'
 ]);

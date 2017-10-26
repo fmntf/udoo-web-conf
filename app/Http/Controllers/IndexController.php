@@ -30,7 +30,7 @@ class IndexController extends Controller
 
         exec("ping -c 1 google.com", $ping, $onlineStatus);
 
-        return view('home', [
+        return view('dashboard', [
             'ethernet' => $connections->getEthernetAddress(),
             'usb' => $connections->getUsbAddress(),
             'wlan' => $connections->getWirelessAddress(),

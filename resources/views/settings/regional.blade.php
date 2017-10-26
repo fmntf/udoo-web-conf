@@ -1,4 +1,4 @@
-@extends('default')
+@extends('template')
 
 @section('title', 'Region and Language')
 
