@@ -40,7 +40,7 @@ class IndexController extends Controller
             ],
             'board' => [
                 'id' => $_SESSION['board']['id'],
-                'name' => $hostname,
+                'name' => trim($hostname),
                 'image' => $_SESSION['board']['image'],
                 'model' => $_SESSION['board']['model'],
                 'online' => $onlineStatus === 0 ? 'Connected' : 'Unavailable',

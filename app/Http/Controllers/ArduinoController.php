@@ -33,7 +33,7 @@ void loop() {
         $iot = new IoT();
 
         return view('arduino/appinventor', [
-            'loggedid' => $iot->getStatus() != 'Not logged in',
+            'loggedin' => $iot->getStatus() != 'Not logged in',
         ]);
     }
 

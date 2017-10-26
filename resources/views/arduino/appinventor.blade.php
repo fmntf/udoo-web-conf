@@ -36,7 +36,7 @@
                         <a href="http://ai2.appinventor.mit.edu" target="_blank" class="btn bg-pink waves-effect">OPEN APP INVENTOR 2</a>
                     </div>
 
-                    @if (!$loggedid)
+                    @if (!$loggedin)
                         <div class="alert alert-warning m-t-30" role="alert">
                             Your board is not enrolled in the UDOO IoT cloud.
                             <a href="{{ route('iot-register') }}">Register your board</a> before using it with App Inventor.
