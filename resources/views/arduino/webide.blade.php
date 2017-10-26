@@ -64,6 +64,6 @@
 @endsection
 
 @section('scripts')
-    <script src="/js/ace/ace.js" type="text/javascript"></script>
+    <script src="/plugins/ace/ace.js" type="text/javascript"></script>
     <script src="/js/arduino-webide.js"></script>
 @endsection

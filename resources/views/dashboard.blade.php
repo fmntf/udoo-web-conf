@@ -303,7 +303,7 @@
 @endsection
 
 @section('scripts')
-    <script src="/js/reconnecting-websocket.js"></script>
+    <script src="/plugins/reconnecting-websocket.js"></script>
     <script src="/js/dashboard.js"></script>
     <script>
         $(function() {
