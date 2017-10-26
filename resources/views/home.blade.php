@@ -1,6 +1,6 @@
 @extends('default')
 
-@section('title', 'UDOO Web Conf')
+@section('title', 'UDOO Web Control Panel')
 
 @section('content')
 
@@ -142,26 +142,21 @@
                         </div>
                     @endif
 
-                    @if (is_int($updates))
-                        @if ($updates == 0)
-                            <div class="alert bg-green alert-dismissible no-updates" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                {{ $board['os'] }} is updated.
-                            </div>
-                        @else
-                            <div class="alert alert-warning alert-dismissible updates-available" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                There are <span class="nr">{{ $updates }}</span> updates available for {{ $board['os'] }}.
-                                <a href="{{ route('updates-install') }}">Install the updates</a> now.
-                            </div>
-                        @endif
-                    @else
-                        <div class="alert alert-warning alert-dismissible updates-checking" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                            Checking for updates...
-                        </div>
-                    @endif
-                    <script>updatesAvailable = "{{$updates}}";</script>
+                    <div class="alert alert-warning alert-dismissible updates-checking" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        Checking updates for {{ $board['os'] }}...
+                    </div>
+
+                    <div class="alert bg-green alert-dismissible no-updates hidden" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        {{ $board['os'] }} is updated.
+                    </div>
+
+                    <div class="alert alert-warning alert-dismissible updates-available hidden" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        There are <span class="nr">0</span> updates available for {{ $board['os'] }}.
+                        <a href="{{ route('updates-install') }}">Install the updates</a> now.
+                    </div>
                </div>
             </div>
         </div>

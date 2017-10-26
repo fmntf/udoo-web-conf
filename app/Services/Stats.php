@@ -31,9 +31,12 @@ class Stats
     }
 
     public function getRamUsage() {
-        exec("free |grep Mem|awk '{print $2 \"   \" $3}'", $ram, $retval);
+        exec("free |grep Mem|awk '{print $2 \"   \" $3 \"   \" \$NF-1}'", $ram, $retval);
         $ram = explode('   ', $ram[0]);
-        return ['total' => (int)$ram[0], 'used' => (int)$ram[1]];
+        return [
+            'total' => (int)$ram[0],
+            'used' => (int)$ram[1] - (int)$ram[2]
+        ];
     }
 
     private function secondsToTime($inputSeconds) {

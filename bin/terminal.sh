@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PID=`ps aux | grep "[t]ttyd -p 57125" |awk '{print $2}'`
+PID=`ps aux | grep "[t]tyd -p 57125" |awk '{print $2}'`
 
 if [ -z "$PID" ]; then
     echo "Starting Terminal Server"

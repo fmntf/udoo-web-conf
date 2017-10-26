@@ -1,7 +1,7 @@
 ﻿$(function() {
     $.ajax({
         type: "GET",
-        url: '/services/terminal/'
+        url: '/terminal/start'
     });
 
     var height = $("#leftsidebar").height()-170;

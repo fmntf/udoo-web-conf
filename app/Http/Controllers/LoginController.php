@@ -33,7 +33,7 @@ class LoginController extends Controller
     }
 
     public function logout() {
-        $_SESSION['auth'] = false;
+        $_SESSION = [];
         return redirect(route('login'));
     }
 }

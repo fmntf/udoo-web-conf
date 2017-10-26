@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\BackgroundService;
 use App\Services\IoT;
 use App\Services\Stats;
 use Laravel\Lumen\Routing\Controller;
@@ -51,15 +52,18 @@ class IndexController extends Controller
                 'ram' => $stats->getRamUsage(),
             ],
             'default_password' => array_key_exists('default_password', $_SESSION) && $_SESSION['default_password'] === true,
-            'updates' => $this->getUpdates(),
         ]);
     }
 
-    private function getUpdates() {
-        if (array_key_exists('updates', $_SESSION)) {
-            return $_SESSION['updates'];
-        } else {
-            return 'check';
+    public function startwebsocket() {
+        if (array_key_exists('websocketservice', $_SESSION)) {
+            return response()->json([
+                'success' => true
+            ]);
         }
+
+        $_SESSION['websocketservice'] = true;
+        $bs = new BackgroundService();
+        return $bs->run("wsserver");
     }
 }

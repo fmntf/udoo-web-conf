@@ -1,21 +1,34 @@
 ﻿$(function() {
     $.ajax({
         type: "GET",
-        url: '/services/websocket/'
+        url: '/startwebsocket/'
     });
 
     setTimeout(startWS, 1000);
 
-    if (updatesAvailable === "check") {
-        $.ajax({
-            type: "GET",
-            url: '/updates/check/',
-            success: function(response) {
-
-            }
-        });
-    }
+    checkUpdates();
+    window.UDOO.updatesTask = setInterval(function() {
+        checkUpdates();
+    }, 10000);
 });
+
+function checkUpdates() {
+    $.ajax({
+        type: "GET",
+        url: '/updates/update/',
+        success: function (response) {
+            if (response.pending === false) {
+                clearInterval(window.UDOO.updatesTask);
+                $('.updates-checking').addClass('hidden');
+                if (response.updates === 0) {
+                    $('.no-updates').removeClass('hidden');
+                } else {
+                    $('.updates-available').removeClass('hidden');
+                }
+            }
+        }
+    });
+}
 
 function startWS() {
     var ws = new ReconnectingWebSocket('ws://' + location.hostname + ":57120");

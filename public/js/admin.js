@@ -393,3 +393,5 @@ $(function () {
     $.AdminBSB.input.activate();
     $.AdminBSB.select.activate();
 });
+
+window.UDOO = {};

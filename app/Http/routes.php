@@ -1,28 +1,27 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It is a breeze. Simply tell Lumen the URIs it should respond to
-| and give it the Closure to call when that URI is requested.
-|
-*/
-
-//$app->get('/', function () use ($app) {
-//    return $app->make('view')->make('home');
-//});
-
 $app->get('/', [
     'as' => 'index', 'uses' => 'IndexController@index'
+]);
+
+$app->get('/startwebsocket', [
+    'as' => 'startwebsocket', 'uses' => 'IndexController@startwebsocket'
 ]);
 
 $app->get('/dashboard', [
     'as' => 'dashboard', 'uses' => 'IndexController@dashboard'
 ]);
 
+$app->get('/terminal', [
+    'as' => 'terminal', 'uses' => 'TerminalController@index'
+]);
+
+$app->get('/terminal/start', [
+    'as' => 'terminal-start', 'uses' => 'TerminalController@start'
+]);
+
+
+/* LOGIN */
 $app->get('/login', [
     'as' => 'login', 'uses' => 'LoginController@index'
 ]);
@@ -35,13 +34,8 @@ $app->get('/logout', [
     'as' => 'logout', 'uses' => 'LoginController@logout'
 ]);
 
-$app->get('/terminal', [
-    'as' => 'terminal', 'uses' => 'TerminalController@index'
-]);
-
 
 /* ARDUINO */
-
 $app->get('/arduino/samples', [
     'as' => 'arduino-samples', 'uses' => 'ArduinoController@samples'
 ]);
@@ -72,8 +66,6 @@ $app->post('/arduino/compilesketch', [
 
 
 /* SETTINGS */
-
-
 $app->get('/settings/base', [
     'as' => 'settings-base', 'uses' => 'SettingsController@base'
 ]);
@@ -152,24 +144,14 @@ $app->get('/power/poweroff-action', [
 
 
 /* UPDATES */
-$app->get('/updates/check', [
-    'as' => 'updates-check', 'uses' => 'UpdatesController@check'
+$app->get('/updates/update', [
+    'as' => 'updates-update', 'uses' => 'UpdatesController@update'
 ]);
 
 $app->get('/settings/advanced-install', [
     'as' => 'updates-install', 'uses' => 'UpdatesController@install'
 ]);
 
-/* SERVICES */
-
-$app->get('/services/websocket', [
-    'as' => 'services-websocket', 'uses' => 'ServicesController@websocket'
-]);
-
-$app->get('/services/terminal', [
-    'as' => 'services-terminal', 'uses' => 'ServicesController@terminal'
-]);
-
-$app->get('/services/updates', [
-    'as' => 'services-updates', 'uses' => 'ServicesController@updates'
+$app->get('/updates/installed', [
+    'as' => 'updates-installed', 'uses' => 'UpdatesController@installed'
 ]);

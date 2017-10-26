@@ -17,7 +17,7 @@
         ws.onclose = function() {
             $.ajax({
                 type: "GET",
-                url: '/updates/check/'
+                url: '/updates/installed/'
             });
             $('iframe').hide();
             $('iframe').parent().append("<p>Updates installed successfully!</p>");
