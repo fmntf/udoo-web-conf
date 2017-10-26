@@ -27,7 +27,7 @@
 <nav class="nav-fixed arduino_teal">
     <div class="nav-wrapper container">
         <a id="logo-container" class="brand-logo">
-            <span class="app_title translatable_title">Ardublockly:</span>
+            <span class="app_title translatable_title">Ardublockly</span>
         </span>
         </a>
         <!-- Horizontal Navbar links only shown on large resolutions -->
