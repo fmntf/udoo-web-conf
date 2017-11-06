@@ -7,10 +7,6 @@ use Laravel\Lumen\Routing\Controller;
 
 class UpdatesController extends Controller
 {
-    public function install() {
-        return view('updates');
-    }
-
     public function update() {
         if (array_key_exists('updateservice', $_SESSION)) {
             exec("ps aux | grep \"[a]pt update\" |awk '{print $2}'", $out, $ret);
@@ -35,6 +31,15 @@ class UpdatesController extends Controller
         $_SESSION['updateservice'] = true;
         $bs = new BackgroundService();
         return $bs->run("apt-update");
+    }
+
+    public function install() {
+        return view('updates');
+    }
+
+    public function distupgrade() {
+        $bs = new BackgroundService();
+        return $bs->run("apt-upgrade");
     }
 
     public function installed() {

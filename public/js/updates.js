@@ -1,7 +1,7 @@
 ﻿$(function() {
     $.ajax({
         type: "GET",
-        url: '/services/updates/'
+        url: '/updates/dist-upgrade/'
     });
 
     var height = $("#leftsidebar").height()-170;

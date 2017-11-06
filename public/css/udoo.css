@@ -10,6 +10,9 @@
     margin: 0 auto;
 }
 
+.card.equalheight {
+	height: 264px;
+}
 
 /* 9 Axis Sensors */
 
@@ -21,16 +24,12 @@
     margin-top: 4px;
 }
 
-.sensors-bars .row {
-    height: 55px;
+#motionsensors .col-xs-2, #motionsensors .col-xs-10 {
+	margin-bottom: 18px !important;
 }
 
-#motionsensors .col-xs-10 {
-    margin-bottom: 23px !important;
-}
-
-#motionsensorsmod .col-xs-10 {
-    margin-bottom: 10px !important;
+#motionsensorsmod .col-xs-2, #motionsensorsmod .col-xs-10 {
+	margin-bottom: 8px !important;
 }
 
 #motionsensorsmod.sensors-bars .progress {
@@ -104,8 +103,8 @@
 .iot-login .login-box .msg {
     color: #555;
     text-align: center;
+    font-size: 16px;
 }
-
 
 
 /* Misc */
@@ -147,4 +146,8 @@
 
 .home-tips {
     padding-bottom: 1px !important;
+}
+
+.noborders {
+    border: none !important;
 }

@@ -37,6 +37,8 @@ class IndexController extends Controller
             'ssid' => $connections->getSSID(),
             'iot' => [
                 'status' => $iot->getStatus(),
+                'clientavailable' => $iot->isClientAvailable(),
+                'loggedin' => $iot->isLoggedIn(),
             ],
             'board' => [
                 'id' => $_SESSION['board']['id'],

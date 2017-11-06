@@ -128,8 +128,36 @@ $app->get('/iot', [
     'as' => 'iot-index', 'uses' => 'IotController@index'
 ]);
 
-$app->get('/iot/register', [
+$app->get('/iot/login', [
+    'as' => 'iot-login', 'uses' => 'IotController@login'
+]);
+
+$app->get('/iot/logout', [
+    'as' => 'iot-logout', 'uses' => 'IotController@logout'
+]);
+
+$app->post('/iot/register', [
     'as' => 'iot-register', 'uses' => 'IotController@register'
+]);
+
+$app->post('/iot/unregister', [
+    'as' => 'iot-unregister', 'uses' => 'IotController@unregister'
+]);
+
+$app->post('/iot/set-server', [
+    'as' => 'iot-setserver', 'uses' => 'IotController@setserver'
+]);
+
+$app->get('/iot/service', [
+    'as' => 'iot-service', 'uses' => 'IotController@service'
+]);
+
+$app->get('/iot/log', [
+    'as' => 'iot-log', 'uses' => 'IotController@log'
+]);
+
+$app->get('/iot/log-server', [
+    'as' => 'iot-logserver', 'uses' => 'IotController@logserver'
 ]);
 
 
@@ -162,4 +190,8 @@ $app->get('/settings/advanced-install', [
 
 $app->get('/updates/installed', [
     'as' => 'updates-installed', 'uses' => 'UpdatesController@installed'
+]);
+
+$app->get('/updates/dist-upgrade', [
+    'as' => 'updates-distupgrade', 'uses' => 'UpdatesController@distupgrade'
 ]);

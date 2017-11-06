@@ -12,7 +12,7 @@
                         APP INVENTOR
                     </h2>
                     <br>
-                    Develop an Android application to control your {{ $_SESSION['board']['shortmodel'] }} using the UDOO IoT extension for App Inventor.
+                    Develop an Android application to control your {{ $_SESSION['board']['shortmodel'] }} using the UDOO IoT Cloud extension for App Inventor.
                 </div>
                 <div class="body">
 
@@ -26,8 +26,8 @@
                         from technology consumption to technology creation.</p>
                     <br>
 
-                    <h4>UDOO IoT Extension</h4>
-                    <p>Download the UDOO IoT extension to develop App Inventor applications able to control your board.</p>
+                    <h4>UDOO IoT Cloud Extension</h4>
+                    <p>Download the UDOO IoT Cloud extension to develop App Inventor applications able to control your board.</p>
                     <p>Import the extension using the <i>Import Extension</i> link in the Components Palette.</p>
 
                     <div class="text-center m-t-30 m-b-10">
@@ -38,7 +38,7 @@
 
                     @if (!$loggedin)
                         <div class="alert alert-warning m-t-30" role="alert">
-                            Your board is not enrolled in the UDOO IoT cloud.
+                            Your board is not enrolled in the UDOO IoT Cloud.
                             <a href="{{ route('iot-register') }}">Register your board</a> before using it with App Inventor.
                         </div>
                     @endif

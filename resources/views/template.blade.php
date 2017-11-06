@@ -114,7 +114,7 @@
                 <li>
                     <a href="/iot">
                         <i class="material-icons">cloud</i>
-                        <span>UDOO IoT</span>
+                        <span>UDOO IoT Cloud</span>
                     </a>
                 </li>
                 <li>

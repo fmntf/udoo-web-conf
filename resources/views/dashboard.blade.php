@@ -48,7 +48,7 @@
                     <i class="material-icons">cloud</i>
                 </div>
                 <div class="content">
-                    <div class="text">UDOO IoT</div>
+                    <div class="text">UDOO IoT Cloud</div>
                     <div class="number">{{ $iot['status'] }}</div>
                 </div>
             </div>
@@ -134,12 +134,20 @@
                         </div>
                     @endif
 
-                    @if ($iot['status'] == 'Not logged in')
+                    @if (!$iot['clientavailable'])
                         <div class="alert bg-teal alert-dismissible" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                            Your board is not enrolled in the UDOO IoT cloud.
-                            <a href="{{ route('iot-register') }}">Register your board</a> now to control it remotely.
+                            UDOO IoT Cloud service is not ready.
+                            <a href="{{ route('iot-service') }}">Install the service</a> to manage your board remotely.
                         </div>
+                    @else
+                        @if (!$iot['loggedin'])
+                            <div class="alert bg-teal alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                Your board is not enrolled in the UDOO IoT Cloud.
+                                <a href="{{ route('iot-register') }}">Register your board</a> now to control it remotely.
+                            </div>
+                        @endif
                     @endif
 
                     <div class="alert alert-warning alert-dismissible updates-checking" role="alert">
@@ -166,7 +174,7 @@
     <div class="row clearfix">
 
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-            <div class="card">
+            <div class="card equalheight">
                 <div class="header">
                     <h2>SD CARD</h2>
                 </div>
@@ -177,7 +185,7 @@
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-            <div class="card">
+            <div class="card equalheight">
                 <div class="header">
                     <h2>RAM MEMORY</h2>
                 </div>
@@ -188,7 +196,7 @@
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-            <div class="card">
+            <div class="card equalheight">
                 <div class="body">
                     <ul class="nav nav-tabs tab-nav-right" role="tablist">
                         <li role="presentation" class="active"><a href="#motionsensors" data-toggle="tab" aria-expanded="true">9-AXIS SENSORS</a></li>

@@ -9,7 +9,7 @@ Vcs-Browser: https://github.com/UDOOboard/udoo-web-conf/
 
 Package: udoo-wcp
 Architecture: all
-Depends: ${misc:Depends}, udoo-web-docs, php-cli | php5-cli | php7-cli | php7.1-cli, network-manager, dtweb, ttyd, python-pam
+Depends: ${misc:Depends}, udoo-web-docs, php-cli | php5-cli | php7-cli | php7.1-cli, php-curl | php5-curl | php7.1-curl, network-manager, dtweb, ttyd, python-pam, tmux (>= 2.2)
 Description: UDOO Web Control Panel
  This tool is designed to allow easy configuration and act as an handy web-based
  control panel for UDOO boards.
