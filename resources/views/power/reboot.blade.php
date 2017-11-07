@@ -48,23 +48,19 @@
             url: '/power/reboot-action'
         });
         setTimeout(function() {
-		console.log("XX");
             setInterval(checkConnection, 10000);
-        }, 5000);
+        }, 25000);
     });
 
     function checkConnection() {
-		console.log("YY");
         $.ajax({
             type: "GET",
             url: '/login',
             success: function(response) {
-console.log(response);
                 if (response.indexOf("/login") > 0) {
                     window.location.href = document.location.origin;
                 }
-            },
-failure: function() {console.log(arguments)}
+            }
         });
     }
 </script>

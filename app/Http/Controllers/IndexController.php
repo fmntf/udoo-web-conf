@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\BackgroundService;
 use App\Services\IoT;
+use App\Services\Online;
 use App\Services\Stats;
 use Laravel\Lumen\Routing\Controller;
 use App\Services\Connections;
@@ -20,6 +21,7 @@ class IndexController extends Controller
         $connections = new Connections();
         $stats = new Stats();
         $iot = new IoT();
+        $online = new Online();
 
         exec("udooscreenctl get", $screen, $status);
         if ($status === 0) {
@@ -27,8 +29,6 @@ class IndexController extends Controller
         } else {
             $screen = "Unknown";
         }
-
-        exec("ping -c 1 google.com", $ping, $onlineStatus);
 
         return view('dashboard', [
             'ethernet' => $connections->getEthernetAddress(),
@@ -45,7 +45,7 @@ class IndexController extends Controller
                 'name' => trim($hostname),
                 'image' => $_SESSION['board']['image'],
                 'model' => $_SESSION['board']['model'],
-                'online' => $onlineStatus === 0 ? 'Connected' : 'Unavailable',
+                'online' => $online->toString(),
                 'display' => $screen,
                 'os' => $stats->getOS(),
                 'uptime' => $stats->getUptime(),

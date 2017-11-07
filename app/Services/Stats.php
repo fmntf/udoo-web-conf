@@ -27,7 +27,11 @@ class Stats
     public function getDiskUsage() {
         exec("df -x tmpfs -x devtmpfs |grep -v \'/boot\' |awk '{print $2 \"   \" $3}'", $disk, $retval);
         $disk = explode('   ', $disk[1]);
-        return ['total' => (int)$disk[0], 'free' => (int)$disk[1]];
+        return [
+            'total' => (int)$disk[0],
+            'used' => (int)$disk[1],
+            'free' => (int)$disk[0] - (int)$disk[1]
+        ];
     }
 
     public function getRamUsage() {

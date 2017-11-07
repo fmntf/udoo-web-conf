@@ -145,7 +145,7 @@
                             <div class="alert bg-teal alert-dismissible" role="alert">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
                                 Your board is not enrolled in the UDOO IoT Cloud.
-                                <a href="{{ route('iot-register') }}">Register your board</a> now to control it remotely.
+                                <a href="{{ route('iot-login') }}">Register your board</a> now to control it remotely.
                             </div>
                         @endif
                     @endif
@@ -321,7 +321,7 @@
                     value: '{{ number_format($board['disk']['free']/1048576, 1) }} GB'
                 }, {
                     label: 'Used',
-                    value: '{{ number_format(($board['disk']['total']-$board['disk']['free'])/1048576, 1) }} GB'
+                    value: '{{ number_format(($board['disk']['used'])/1048576, 1) }} GB'
                 }],
                 ['rgb(139, 195, 74)', 'rgb(76, 175, 80)']
             );

@@ -1,10 +1,10 @@
-/debian/udoo-wcp/
+/debian/udoo-web-conf/
 /debian/files
-/debian/udoo-wcp.debhelper.log
-/debian/udoo-wcp.postinst.debhelper
-/debian/udoo-wcp.preinst.debhelper
-/debian/udoo-wcp.prerm.debhelper
-/debian/udoo-wcp.substvars
+/debian/udoo-web-conf.debhelper.log
+/debian/udoo-web-conf.postinst.debhelper
+/debian/udoo-web-conf.preinst.debhelper
+/debian/udoo-web-conf.prerm.debhelper
+/debian/udoo-web-conf.substvars
 /vendor
 .idea
 

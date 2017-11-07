@@ -9,6 +9,7 @@
         </div>
     </div>
 
+    @if ($online)
     <div class="row iot-login m-t-100">
         <div class="col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
             <div class="login-box">
@@ -44,6 +45,21 @@
             </div>
         </div>
     </div>
+    @else
+    <div class="row iot-login m-t-100">
+        <div style="width: 625px !important; margin: 0 auto;">
+            <div class="login-box">
+                <div class="card">
+                    <div class="body">
+                        <h2 class="m-t-0">You are offline!</h2>
+                        <h4>Please connect your board to the Internet to continue.</h4>
+                        <img src="/images/offline.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
 
     <div class="modal fade" id="waitDialog" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">

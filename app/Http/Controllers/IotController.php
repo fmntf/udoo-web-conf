@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\BackgroundService;
 use App\Services\IoT;
+use App\Services\Online;
 use App\Services\IniFile;
 use Illuminate\Http\Request;
 use Laravel\Lumen\Routing\Controller;
@@ -36,6 +37,7 @@ class IotController extends Controller
 
     public function login() {
         $iot = new IoT();
+        $online = new Online();
 
         $ini = new IniFile("/etc/udoo-iot-client/config.ini");
         $conf = $ini->get();
@@ -46,6 +48,7 @@ class IotController extends Controller
         }
 
         return view('iot/login', [
+            'online' => $online->isOnline(),
             'iotserver' => $conf['server'],
             'iotbaseurl' => $base,
             'hostname' => trim(file_get_contents("/etc/hostname")),
@@ -53,7 +56,10 @@ class IotController extends Controller
     }
 
     public function logout() {
-        return view('iot/logout');
+        $online = new Online();
+        return view('iot/logout', [
+            'online' => $online->isOnline(),
+        ]);
     }
 
     public function register(Request $request) {

@@ -20,11 +20,19 @@ function login() {
                     window.location.replace("/iot");
                 }, 2000);
             } else {
-                showMessage(response.message || "Cannot connect to UDOO IoT Cloud!");
+                var message = response.message || "Cannot connect to UDOO IoT Cloud!";
+                if (typeof message === 'object') {
+                    message = "Error " + message.code;
+                }
+                showMessage(message);
             }
         },
         error: function(response) {
-            showMessage(response.message || "Cannot connect to UDOO IoT Cloud!");
+            var message = response.message || "Cannot connect to UDOO IoT Cloud!";
+            if (typeof message === 'object') {
+                message = "Error " + message.code;
+            }
+            showMessage(message);
         }
     });
 }
