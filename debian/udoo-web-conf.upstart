@@ -1,6 +1,6 @@
 
 #
-# udoo-wcp - start script
+# udoo-web-conf - start script
 #
 
 description "UDOO Neo Web Configurator"
@@ -13,9 +13,9 @@ respawn
 respawn limit 4 20
 
 script
-  chdir /opt/udoo-wcp/public
-  exec start-stop-daemon --chdir /opt/udoo-wcp/public \
+  chdir /opt/udoo-web-conf/public
+  exec start-stop-daemon --chdir /opt/udoo-web-conf/public \
     --chuid root \
     --start \
-    --exec /usr/bin/php -- -S 0.0.0.0:$(cat /etc/udoo-wcp/port)
+    --exec /usr/bin/php -- -S 0.0.0.0:$(cat /etc/udoo-web-conf/port)
 end script

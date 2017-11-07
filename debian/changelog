@@ -1,4 +1,4 @@
-udoo-wcp (2.0) trusty; urgency=medium
+udoo-web-conf (2.0) trusty; urgency=medium
 
   * Application rewritten in PHP.
 

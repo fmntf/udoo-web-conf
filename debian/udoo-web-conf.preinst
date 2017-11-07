@@ -1,5 +1,5 @@
 #!/bin/sh
-# preinst script for udoo-wcp
+# preinst script for udoo-web-conf
 #
 # see: dh_installdeb(1)
 
@@ -7,12 +7,9 @@ set -e
 
 case "$1" in
   install|upgrade)
-    mkdir -p /etc/udoo-wcp
-    if [ ! -f /etc/udoo-wcp/port ]; then
-      echo 80 > /etc/udoo-wcp/port
-    fi
-    if [ ! -f /etc/udoo-wcp/url_iot ]; then
-      echo "http://udoo.cloud" > /etc/udoo-wcp/url_iot
+    mkdir -p /etc/udoo-web-conf
+    if [ ! -f /etc/udoo-web-conf/port ]; then
+      echo 80 > /etc/udoo-web-conf/port
     fi
     ;;
 

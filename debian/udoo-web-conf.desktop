@@ -5,4 +5,4 @@ Type=Application
 Exec=x-www-browser http://127.0.0.1/
 Categories=Settings;HardwareSettings;
 Terminal=false
-Icon=udoo-wcp
+Icon=udoo-web-conf
