@@ -8,6 +8,16 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header">
+                    <div class="wifi-spinner preloader pl-size-xs pull-right">
+                        <div class="spinner-layer pl-pink">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
                     <h2>
                         CONNECT TO WI-FI
                     </h2>

@@ -16,6 +16,11 @@ function refreshWifiList() {
             if (response.success) {
                 $('.wifi-spinner').addClass("hidden");
                 $('.list-group.wifi').empty();
+
+                if (response.wifi.length === 0) {
+                    $('.list-group.wifi').html("No networks found!");
+                    return;
+                }
                 
                 for (var i=0; i<response.wifi.length; i++) {
                     var w = response.wifi[i];
