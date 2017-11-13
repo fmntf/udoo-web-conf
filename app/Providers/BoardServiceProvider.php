@@ -27,9 +27,11 @@ class BoardServiceProvider extends ServiceProvider
             $model = file_get_contents("/proc/device-tree/model");
             $boardModel = trim($model);
             $cpuID = $this->getIMXCpuID();
+            $arch = 'arm';
         } else {
             $boardModel = file_get_contents("/sys/class/dmi/id/board_name");
             $cpuID = file_get_contents("/sys/class/dmi/id/board_serial");
+            $arch = 'x86';
         }
 
         switch ($boardModel) {
@@ -77,7 +79,14 @@ class BoardServiceProvider extends ServiceProvider
                 $hasLvds15 = false;
         }
 
+        exec("lsb_release -r", $out, $ret);
+        $version = explode(":", $out[0]);
+        $version = trim($version[1]);
+        $is1604 = version_compare($version, "16.04", ">=");
+
         $_SESSION['board'] = [
+            'arch' => $arch,
+            'is1604 ' => $is1604,
             'model' => $boardModel,
             'shortmodel' => $shortModel,
             'id' => $cpuID,

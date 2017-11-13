@@ -23,6 +23,7 @@ function checkUpdates() {
                 if (response.updates === 0) {
                     $('.no-updates').removeClass('hidden');
                 } else {
+                    $('.updates-available .nr').html(response.updates);
                     $('.updates-available').removeClass('hidden');
                 }
             }

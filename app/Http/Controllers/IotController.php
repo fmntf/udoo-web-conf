@@ -32,7 +32,7 @@ class IotController extends Controller
     }
 
     public function service() {
-        return 123;
+        return '^_^';
     }
 
     public function login() {
