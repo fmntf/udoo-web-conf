@@ -14,6 +14,19 @@
 	height: 264px;
 }
 
+@media (min-width: 992px) and (max-width: 1184px) {
+    div.info-box .content .number {
+        font-size: 1.7vw;
+    }
+}
+
+@media (min-width: 1185px) {
+    div.info-box .content .number {
+        font-size: 1.4vw;
+    }
+}
+
+
 /* 9 Axis Sensors */
 
 .sensors-padding {

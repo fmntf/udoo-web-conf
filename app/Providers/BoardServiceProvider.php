@@ -86,7 +86,7 @@ class BoardServiceProvider extends ServiceProvider
 
         $_SESSION['board'] = [
             'arch' => $arch,
-            'is1604 ' => $is1604,
+            'is1604' => $is1604,
             'model' => $boardModel,
             'shortmodel' => $shortModel,
             'id' => $cpuID,

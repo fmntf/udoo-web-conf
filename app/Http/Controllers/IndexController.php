@@ -31,10 +31,10 @@ class IndexController extends Controller
         }
 
         return view('dashboard', [
-            'ethernet' => $connections->getEthernetAddress(),
-            'usb' => $connections->getUsbAddress(),
-            'wlan' => $connections->getWirelessAddress(),
-            'ssid' => $connections->getSSID(),
+            'ethernet' => str_replace(" ", "&nbsp;", $connections->getEthernetAddress()),
+            'usb' => str_replace(" ", "&nbsp;", $connections->getUsbAddress()),
+            'wlan' => str_replace(" ", "&nbsp;", $connections->getWirelessAddress()),
+            'ssid' => str_replace(" ", "&nbsp;", $connections->getSSID()),
             'iot' => [
                 'status' => $iot->getStatus(),
                 'clientavailable' => $iot->isClientAvailable(),
