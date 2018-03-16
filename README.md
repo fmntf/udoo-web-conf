@@ -1,4 +1,5 @@
 # UDOO Board Web Control Panel
+![UDOO Web Conf](https://www.udoo.org/wp-content/uploads/2017/12/webconf.png)
 
 ## Features
 This application allows to quickly use your new UDOO board:
